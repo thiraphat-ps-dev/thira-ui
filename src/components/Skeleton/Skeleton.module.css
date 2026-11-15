@@ -1,0 +1,68 @@
+@layer thira {
+  .skeleton {
+    /* Translucent so it reads on any surface; recomputed per element, so subtree themes work. */
+    --_base: oklch(from var(--thira-border) l c h / 0.7);
+    --_shine: oklch(from var(--thira-border) calc(l + 0.06) c h / 0.6);
+
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--_base);
+    /* Keep the shimmer clipped to rounded corners in Safari. */
+    isolation: isolate;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, var(--_shine), transparent);
+      transform: translateX(-100%);
+      /* Only transform animates: stays on the compositor, no repaint of the box. */
+      animation: shimmer 1.6s ease-in-out infinite;
+      will-change: transform;
+    }
+  }
+
+  .text {
+    inline-size: 100%;
+    block-size: 1em;
+    border-radius: var(--thira-radius-sm);
+  }
+
+  .rect {
+    inline-size: 100%;
+    block-size: 4rem;
+    border-radius: var(--thira-radius-md);
+  }
+
+  .circle {
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    flex-shrink: 0;
+    border-radius: var(--thira-radius-full);
+  }
+
+  .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    inline-size: 100%;
+
+    & > :last-child:not(:first-child) {
+      inline-size: 60%;
+    }
+  }
+
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+      display: none;
+      animation: none;
+    }
+  }
+}

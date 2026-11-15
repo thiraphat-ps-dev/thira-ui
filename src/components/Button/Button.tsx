@@ -3,6 +3,7 @@ import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 import type { ComponentProps, ReactElement } from 'react';
 import { cx } from '../../utils/cx';
+import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'danger';
@@ -34,7 +35,8 @@ export function Button({
   const classes = cx(styles.button, styles[variant], styles[size], className);
   const content = (
     <>
-      {loading && <span className={styles.spinner} aria-hidden="true" />}
+      {/* Decorative: the button itself carries aria-busy, so the spinner must not announce again. */}
+      {loading && <Spinner label={null} className={styles.spinner} />}
       {children}
     </>
   );

@@ -88,18 +88,9 @@
     }
   }
 
-  .spinner {
-    width: 1em;
-    height: 1em;
-    border: 2px solid currentColor;
-    border-right-color: transparent;
-    border-radius: var(--thira-radius-full);
-    animation: thira-spin 0.7s linear infinite;
-  }
-
-  @keyframes thira-spin {
-    to {
-      rotate: 360deg;
-    }
+  /* Spinner (see Spinner.tsx) sized to the button's font. */
+  .button .spinner {
+    --_size: 1em;
+    --_stroke: 2px;
   }
 }

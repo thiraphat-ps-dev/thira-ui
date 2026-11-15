@@ -36,6 +36,8 @@ export {
   type SelectItemProps,
   type SelectProps,
 } from './components/Select/Select';
+export { Skeleton, type SkeletonProps, type SkeletonVariant } from './components/Skeleton/Skeleton';
+export { Spinner, type SpinnerProps, type SpinnerSize } from './components/Spinner/Spinner';
 export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
 export {
   Tabs,

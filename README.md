@@ -1,5 +1,7 @@
 # thira-ui
 
+![thira-ui — an accessible React UI library built on Base UI and modern CSS](./docs/banner.jpg)
+
 [![CI](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Storybook](https://img.shields.io/badge/Storybook-live_demo-FF4785?logo=storybook&logoColor=white)](https://thiraphat-ps-dev.github.io/thira-ui/)

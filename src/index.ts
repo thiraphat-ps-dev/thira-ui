@@ -43,6 +43,7 @@ export {
   type TabsProps,
   type TabsTabProps,
 } from './components/Tabs/Tabs';
+export { Textarea, type TextareaProps } from './components/Textarea/Textarea';
 export {
   ToastProvider,
   useToast,

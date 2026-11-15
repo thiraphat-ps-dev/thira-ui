@@ -4,6 +4,7 @@ export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from '.
 export { Card, type CardProps } from './components/Card/Card';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
+export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
 export {
   Tabs,
   type TabsListProps,

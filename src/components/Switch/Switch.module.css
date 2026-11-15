@@ -1,0 +1,120 @@
+@layer thira {
+  .field {
+    /* Track geometry; the thumb is inset by --thira-switch-pad on every side. */
+    --thira-switch-w: 2.25rem;
+    --thira-switch-h: 1.25rem;
+    --thira-switch-pad: 2px;
+
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--thira-space-3);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    line-height: 1.4;
+  }
+
+  .sm {
+    --thira-switch-w: 1.875rem;
+    --thira-switch-h: 1rem;
+  }
+  .md {
+    --thira-switch-w: 2.25rem;
+    --thira-switch-h: 1.25rem;
+  }
+  .lg {
+    --thira-switch-w: 2.75rem;
+    --thira-switch-h: 1.5rem;
+  }
+
+  .track {
+    all: unset;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    width: var(--thira-switch-w);
+    height: var(--thira-switch-h);
+    padding: var(--thira-switch-pad);
+    border-radius: var(--thira-radius-full);
+    /* text-muted keeps the "off" track ≥3:1 against the surface in both themes (WCAG 1.4.11). */
+    background: var(--thira-text-muted);
+    cursor: pointer;
+    transition: background-color var(--thira-duration) var(--thira-ease);
+
+    /* Vertically center the track on the first line of the label. */
+    margin-block-start: calc((1lh - var(--thira-switch-h)) / 2);
+
+    &:hover:not([data-disabled]) {
+      background: oklch(from var(--thira-text-muted) calc(l - 0.06) c h);
+    }
+
+    &[data-checked] {
+      background: var(--thira-accent);
+    }
+
+    &[data-checked]:hover:not([data-disabled]) {
+      background: var(--thira-accent-hover);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  .thumb {
+    --thira-switch-thumb: calc(var(--thira-switch-h) - 2 * var(--thira-switch-pad));
+
+    width: var(--thira-switch-thumb);
+    height: var(--thira-switch-thumb);
+    border-radius: var(--thira-radius-full);
+    background: var(--thira-surface);
+    box-shadow: var(--thira-shadow-sm);
+    transition:
+      translate var(--thira-duration) var(--thira-ease),
+      background-color var(--thira-duration) var(--thira-ease);
+
+    &[data-checked] {
+      translate: calc(var(--thira-switch-w) - var(--thira-switch-h)) 0;
+      background: var(--thira-on-accent);
+    }
+
+    &:dir(rtl)[data-checked] {
+      translate: calc(var(--thira-switch-h) - var(--thira-switch-w)) 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track,
+    .thumb {
+      transition: none;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-1);
+  }
+
+  .label {
+    font-weight: 500;
+    color: var(--thira-text);
+    cursor: pointer;
+  }
+
+  .field:has(.track[data-disabled]) .label {
+    cursor: not-allowed;
+  }
+
+  .description {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+}

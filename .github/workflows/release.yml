@@ -25,4 +25,11 @@ jobs:
       - name: Tag matches package.json version
         run: |
           test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
-      - run: npm publish
+      - name: Publish (skip if this version is already on npm)
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if npm view "thira-ui@$V" version >/dev/null 2>&1; then
+            echo "thira-ui@$V is already published, skipping."
+          else
+            npm publish
+          fi

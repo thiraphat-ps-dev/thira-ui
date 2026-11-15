@@ -17,8 +17,12 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cx(styles.header, className)} {...props} />;
 }
 
-function CardTitle({ className, ...props }: ComponentProps<'h3'>) {
-  return <h3 className={cx(styles.title, className)} {...props} />;
+function CardTitle({ className, children, ...props }: ComponentProps<'h3'>) {
+  return (
+    <h3 className={cx(styles.title, className)} {...props}>
+      {children}
+    </h3>
+  );
 }
 
 function CardDescription({ className, ...props }: ComponentProps<'p'>) {

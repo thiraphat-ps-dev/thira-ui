@@ -4,16 +4,24 @@ import '../src/styles/tokens.css';
 import { ToastProvider } from '../src';
 import './preview.css';
 
+type Theme = 'light' | 'dark' | 'system';
+
 /** Applies the toolbar theme to <html data-theme> so tokens switch exactly like in a real app. */
-const withTheme: Decorator = (Story, context) => {
-  const theme = context.globals.theme as 'light' | 'dark' | 'system';
+function ThemeSync({ theme }: { theme: Theme }) {
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'system') delete root.dataset.theme;
     else root.dataset.theme = theme;
   }, [theme]);
-  return <Story />;
-};
+  return null;
+}
+
+const withTheme: Decorator = (Story, context) => (
+  <>
+    <ThemeSync theme={context.globals.theme as Theme} />
+    <Story />
+  </>
+);
 
 const withToasts: Decorator = (Story) => (
   <ToastProvider>

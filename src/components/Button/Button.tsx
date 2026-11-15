@@ -22,7 +22,15 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className'>
   render?: ReactElement;
 }
 
-export function Button({ variant = 'solid', size = 'md', loading = false, className, children, render, ...props }: ButtonProps) {
+export function Button({
+  variant = 'solid',
+  size = 'md',
+  loading = false,
+  className,
+  children,
+  render,
+  ...props
+}: ButtonProps) {
   const classes = cx(styles.button, styles[variant], styles[size], className);
   const content = (
     <>
@@ -43,7 +51,7 @@ export function Button({ variant = 'solid', size = 'md', loading = false, classN
   return (
     <BaseButton
       type={type ?? 'button'}
-      disabled={disabled || loading}
+      disabled={disabled === true || loading}
       focusableWhenDisabled={loading}
       aria-busy={loading || undefined}
       data-loading={loading || undefined}

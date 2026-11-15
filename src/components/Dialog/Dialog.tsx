@@ -13,13 +13,23 @@ export interface DialogContentProps extends Omit<ComponentProps<typeof BaseDialo
   className?: string;
 }
 
-function DialogContent({ title, description, hideClose = false, size = 'md', className, children, ...props }: DialogContentProps) {
+function DialogContent({
+  title,
+  description,
+  hideClose = false,
+  size = 'md',
+  className,
+  children,
+  ...props
+}: DialogContentProps) {
   return (
     <BaseDialog.Portal>
       <BaseDialog.Backdrop className={styles.backdrop} />
       <BaseDialog.Popup className={cx(styles.popup, styles[size], className)} {...props}>
         <BaseDialog.Title className={styles.title}>{title}</BaseDialog.Title>
-        {description ? <BaseDialog.Description className={styles.description}>{description}</BaseDialog.Description> : null}
+        {description ? (
+          <BaseDialog.Description className={styles.description}>{description}</BaseDialog.Description>
+        ) : null}
         {children}
         {!hideClose && (
           <BaseDialog.Close className={styles.close} aria-label="Close">

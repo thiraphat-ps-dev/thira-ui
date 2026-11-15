@@ -19,7 +19,9 @@ const meta = {
         other players in real time.
       </Card.Body>
       <Card.Footer>
-        <Button variant="ghost" size="sm">Details</Button>
+        <Button variant="ghost" size="sm">
+          Details
+        </Button>
         <Button size="sm">Play now</Button>
       </Card.Footer>
     </Card>

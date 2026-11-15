@@ -78,7 +78,9 @@ export function useToast(): UseToastReturn {
           priority: priority ?? (tone === 'danger' ? 'high' : 'low'),
           actionProps: action ? { children: action.label, onClick: action.onClick } : undefined,
         }),
-      dismiss: (id) => manager.close(id),
+      dismiss: (id) => {
+        manager.close(id);
+      },
     }),
     [manager],
   );

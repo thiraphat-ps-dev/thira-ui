@@ -22,10 +22,18 @@ export const Solid: Story = {};
 export const Variants: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-      <Button {...args} variant="solid">Solid</Button>
-      <Button {...args} variant="outline">Outline</Button>
-      <Button {...args} variant="ghost">Ghost</Button>
-      <Button {...args} variant="danger">Danger</Button>
+      <Button {...args} variant="solid">
+        Solid
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="danger">
+        Danger
+      </Button>
     </div>
   ),
 };
@@ -33,9 +41,15 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-      <Button {...args} size="sm">Small</Button>
-      <Button {...args} size="md">Medium</Button>
-      <Button {...args} size="lg">Large</Button>
+      <Button {...args} size="sm">
+        Small
+      </Button>
+      <Button {...args} size="md">
+        Medium
+      </Button>
+      <Button {...args} size="lg">
+        Large
+      </Button>
     </div>
   ),
 };

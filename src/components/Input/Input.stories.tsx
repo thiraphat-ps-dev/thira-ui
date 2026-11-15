@@ -8,7 +8,13 @@ const meta = {
   argTypes: {
     size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
   },
-  decorators: [(Story) => <div style={{ width: 320 }}><Story /></div>],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Input>;
 
 export default meta;

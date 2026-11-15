@@ -42,11 +42,7 @@ describe('Button', () => {
   });
 
   it('renders as a link with the render prop', () => {
-    render(
-      <Button render={<a href="/docs" />}>
-        Docs
-      </Button>,
-    );
+    render(<Button render={<a href="/docs" />}>Docs</Button>);
     const link = screen.getByRole('link', { name: 'Docs' });
     expect(link).toHaveAttribute('href', '/docs');
     expect(link).toHaveClass('button');

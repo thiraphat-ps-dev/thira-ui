@@ -35,7 +35,12 @@ export const WithForm: Story = {
     <Dialog>
       <Dialog.Trigger render={<Button />}>Edit profile</Dialog.Trigger>
       <Dialog.Content title="Edit profile" description="Changes are visible on your public profile.">
-        <form style={{ display: 'grid', gap: 16, marginTop: 20 }} onSubmit={(e) => e.preventDefault()}>
+        <form
+          style={{ display: 'grid', gap: 16, marginTop: 20 }}
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <Input label="Name" defaultValue="Thiraphat Phutson" />
           <Input label="Website" defaultValue="https://thiraphat-ps-dev.github.io/" />
         </form>
@@ -65,7 +70,14 @@ export const Controlled: Story = {
         <Dialog.Trigger render={<Button variant="outline" />}>Open controlled</Dialog.Trigger>
         <Dialog.Content title="Publish article?" description="It will appear on your profile within 6 hours.">
           <Dialog.Footer>
-            <Button variant="ghost" onClick={() => setOpen(false)}>Not yet</Button>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Not yet
+            </Button>
             <Button loading={saving} onClick={save}>
               {saving ? 'Publishing…' : 'Publish'}
             </Button>

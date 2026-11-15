@@ -26,6 +26,14 @@ export {
   type PopoverProps,
   type PopoverTriggerProps,
 } from './components/Popover/Popover';
+export {
+  Select,
+  type SelectGroupLabelProps,
+  type SelectGroupProps,
+  type SelectItemData,
+  type SelectItemProps,
+  type SelectProps,
+} from './components/Select/Select';
 export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
 export {
   Tabs,

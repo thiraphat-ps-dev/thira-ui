@@ -6,6 +6,20 @@ export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } 
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
 export {
+  Menu,
+  type MenuCheckboxItemProps,
+  type MenuContentProps,
+  type MenuGroupLabelProps,
+  type MenuGroupProps,
+  type MenuItemProps,
+  type MenuItemTone,
+  type MenuProps,
+  type MenuRadioGroupProps,
+  type MenuRadioItemProps,
+  type MenuSeparatorProps,
+  type MenuTriggerProps,
+} from './components/Menu/Menu';
+export {
   Popover,
   type PopoverCloseProps,
   type PopoverContentProps,

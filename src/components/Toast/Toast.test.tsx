@@ -71,6 +71,18 @@ describe('Toast', () => {
     await waitFor(() => expect(screen.queryByText('Saved')).not.toBeInTheDocument());
   });
 
+  it('has no axe violations while visible', async () => {
+    render(
+      <ToastProvider>
+        <Trigger onUndo={() => {}} />
+      </ToastProvider>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Notify' }));
+    expect(screen.getByText('Saved')).toBeInTheDocument();
+    // document.body, because toasts are portaled outside the render container.
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('throws outside the provider', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => renderHook(() => useToast())).toThrow();

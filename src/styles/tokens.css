@@ -36,6 +36,11 @@
     --thira-danger-hover: oklch(from var(--thira-danger) calc(l - 0.06) c h);
     --thira-danger-soft: oklch(from var(--thira-danger) l c h / 0.12);
     --thira-success: oklch(58% 0.15 150);
+    --thira-on-success: oklch(15% 0.02 150); /* dark text: white on L58% green is only ~4.2:1 */
+    --thira-success-soft: oklch(from var(--thira-success) l c h / 0.12);
+    --thira-warning: oklch(80% 0.16 75); /* light amber reads in both themes, so no dark override */
+    --thira-on-warning: oklch(15% 0.02 75);
+    --thira-warning-soft: oklch(from var(--thira-warning) l c h / 0.12);
 
     /* Shape */
     --thira-radius-sm: 6px;

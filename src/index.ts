@@ -1,5 +1,6 @@
 import './styles/tokens.css';
 
+export { Badge, type BadgeProps, type BadgeSize, type BadgeTone, type BadgeVariant } from './components/Badge/Badge';
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button/Button';
 export { Card, type CardProps, type CardTitleProps } from './components/Card/Card';
 export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';

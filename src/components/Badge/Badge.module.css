@@ -1,0 +1,95 @@
+@layer thira {
+  .badge {
+    /* Per tone: --tone (fill, border, dot), --tone-soft (tint), --on-tone (text on fill), --ink (text on tint/surface). */
+    --tone: var(--thira-text-muted);
+    --tone-soft: oklch(from var(--thira-text) l c h / 0.08);
+    --on-tone: var(--thira-surface);
+    --ink: var(--thira-text);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375em;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: var(--thira-radius-full);
+    font-family: var(--thira-font);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  /*
+   * Text on tint / surface mixes the tone with --thira-text, so it gets darker in light mode and
+   * lighter in dark mode. Ratios are tuned for ≥4.5:1 on surface, bg and surface-muted in both themes.
+   */
+  .accent {
+    --tone: var(--thira-accent);
+    --tone-soft: var(--thira-accent-soft);
+    --on-tone: var(--thira-on-accent);
+    --ink: color-mix(in oklab, var(--thira-accent) 70%, var(--thira-text));
+  }
+
+  .success {
+    --tone: var(--thira-success);
+    --tone-soft: var(--thira-success-soft);
+    --on-tone: var(--thira-on-success);
+    --ink: color-mix(in oklab, var(--thira-success) 70%, var(--thira-text));
+  }
+
+  .warning {
+    --tone: var(--thira-warning);
+    --tone-soft: var(--thira-warning-soft);
+    --on-tone: var(--thira-on-warning);
+    /* Amber is light, so it needs more of --thira-text to read on a light background. */
+    --ink: color-mix(in oklab, var(--thira-warning) 50%, var(--thira-text));
+  }
+
+  .danger {
+    --tone: var(--thira-danger);
+    --tone-soft: var(--thira-danger-soft);
+    --on-tone: var(--thira-on-danger);
+    --ink: color-mix(in oklab, var(--thira-danger) 70%, var(--thira-text));
+  }
+
+  .soft {
+    background: var(--tone-soft);
+    color: var(--ink);
+  }
+
+  .solid {
+    background: var(--tone);
+    color: var(--on-tone);
+  }
+
+  .outline {
+    background: transparent;
+    border-color: var(--tone);
+    color: var(--ink);
+  }
+
+  .sm {
+    padding: 0.125rem var(--thira-space-2);
+    font-size: 0.75rem;
+    min-height: 1.25rem;
+  }
+
+  .md {
+    padding: var(--thira-space-1) 0.625rem;
+    font-size: var(--thira-text-sm);
+    min-height: 1.5rem;
+  }
+
+  .dot {
+    flex: none;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: var(--thira-radius-full);
+    background: var(--tone);
+
+    .solid & {
+      background: currentColor;
+    }
+  }
+}

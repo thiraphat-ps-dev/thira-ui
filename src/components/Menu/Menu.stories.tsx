@@ -7,6 +7,18 @@ import { Menu } from './Menu';
 const meta = {
   title: 'Components/Menu',
   component: Menu,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // Intentional Base UI behavior (same as Select): while the popup is open, Base UI renders
+          // visually hidden `aria-hidden` focus-guard spans (tabindex=0) that immediately redirect
+          // focus to keep Tab order correct for the portaled popup. They never hold focus.
+          { id: 'aria-hidden-focus', enabled: false },
+        ],
+      },
+    },
+  },
 } satisfies Meta<typeof Menu>;
 
 export default meta;

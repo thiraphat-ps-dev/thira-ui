@@ -86,10 +86,14 @@ docs/banner.jpg            README banner
 - **TypeScript is pinned to 6.0** because typescript-eslint doesn't support TS 7 yet. **ESLint is pinned to 9** because `eslint-plugin-jsx-a11y` doesn't support ESLint 10 yet. Revisit when they do.
 - ESLint runs `strictTypeChecked` — prefer fixing the code over disabling rules; if a rule must be relaxed, scope it narrowly in `eslint.config.js` with a comment.
 - Toast: Base UI sets `aria-hidden` on high-priority toasts (announced via a separate live region) and on the close button until the viewport is hovered/focused; both clear on focus. axe's `aria-hidden-focus` is disabled for the Toast stories for that reason — don't "fix" it by overriding Base UI.
+- Portaled popups (Menu, Select, Popover) sit outside any landmark, so the jsdom axe matcher turns off axe's `region` rule (Storybook's a11y addon does the same by default).
+- Select, Menu and Popover stories disable `aria-hidden-focus`: while the popup is open Base UI adds `aria-hidden` focus-guard spans with `tabindex=0` that forward focus. Same reasoning as Toast.
+- Layering: Dialog 50–51, Menu/Popover 55, Tooltip 60. Keep new floating parts in this order.
+- Select builds its value→label lookup by walking its children for `Select.Item`; items wrapped in custom components need the `items` prop.
 - jsdom lacks some browser APIs; Base UI's toast close button is `aria-hidden`, so tests click it via its `aria-label`.
 - Line endings are LF everywhere (`.gitattributes`, `.editorconfig`, Prettier).
 
 ## Known gaps / ideas
 
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
-- Not yet: more components (Select, Popover, Menu, Radio, Textarea).
+- Not yet: more components (Radio, Textarea, Combobox, DatePicker).

@@ -29,10 +29,12 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | `Switch`   | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware                     |
 | `Card`     | Compound API: `Card.Header`, `Card.Title` (`render` for heading level), `Card.Description`, `Card.Body`, `Card.Footer` |
 | `Dialog`   | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                                       |
+| `Popover`  | Floating panel anchored to a trigger, optional title/description, arrow and `Popover.Close`                            |
 | `Tabs`     | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator                |
+| `Menu`     | Dropdown action menu: `danger` tone, shortcut hints, groups, separators, checkbox/radio items                          |
+| `Select`   | Single-select dropdown with label, hint/error, groups and an optional `items` prop                                     |
 | `Tooltip`  | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                                     |
 | `Toast`    | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                                        |
-| ---------- | ------------------------------------------------------------------------------------------------------------           |
 
 ## Install
 

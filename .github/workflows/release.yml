@@ -1,10 +1,12 @@
 name: Release
 
-# Publish to npm when a version tag (e.g. v0.2.0) is pushed.
+# Publish to npm when a version tag (e.g. v0.2.0) is pushed, or manually from main
+# (Actions → Release → Run workflow) to retry a release whose tag already exists.
 # Uses npm trusted publishing (OIDC): no NPM_TOKEN secret, provenance is attached automatically.
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -19,12 +21,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
+          # No registry-url: it makes setup-node inject a placeholder NODE_AUTH_TOKEN,
+          # which npm then sends instead of exchanging an OIDC trusted-publishing token.
           cache: npm
       - run: npm ci
       - name: Tag matches package.json version
+        if: github.event_name == 'push'
         run: |
           test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+      - name: Manual runs only release from main
+        if: github.event_name == 'workflow_dispatch'
+        run: test "$GITHUB_REF_NAME" = "main"
       - name: Publish (skip if this version is already on npm)
         run: |
           V=$(node -p "require('./package.json').version")

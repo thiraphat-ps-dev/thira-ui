@@ -5,6 +5,13 @@ export { Card, type CardProps } from './components/Card/Card';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
 export {
+  Tabs,
+  type TabsListProps,
+  type TabsPanelProps,
+  type TabsProps,
+  type TabsTabProps,
+} from './components/Tabs/Tabs';
+export {
   ToastProvider,
   useToast,
   type ToastOptions,

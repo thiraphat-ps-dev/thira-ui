@@ -20,13 +20,14 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 
 ## Components
 
-| Component | Notes                                                                                           |
-| --------- | ----------------------------------------------------------------------------------------------- |
-| `Button`  | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links |
-| `Input`   | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                         |
-| `Card`    | Compound API: `Card.Header`, `Card.Title`, `Card.Description`, `Card.Body`, `Card.Footer`       |
-| `Dialog`  | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                |
-| `Toast`   | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                 |
+| Component | Notes                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------- |
+| `Button`  | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links         |
+| `Input`   | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                 |
+| `Card`    | Compound API: `Card.Header`, `Card.Title`, `Card.Description`, `Card.Body`, `Card.Footer`               |
+| `Dialog`  | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                        |
+| `Tabs`    | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator |
+| `Toast`   | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                         |
 
 ## Usage
 

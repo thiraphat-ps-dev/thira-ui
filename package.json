@@ -1,7 +1,7 @@
 {
   "name": "thira-ui",
   "version": "0.1.0",
-  "description": "A minimal, accessible React component library built on Radix primitives and modern CSS.",
+  "description": "A minimal, accessible React component library built on Base UI primitives and modern CSS.",
   "license": "MIT",
   "author": "Thiraphat Phutson",
   "repository": {
@@ -13,7 +13,7 @@
     "ui",
     "components",
     "design-system",
-    "radix",
+    "base-ui",
     "css-variables",
     "typescript"
   ],

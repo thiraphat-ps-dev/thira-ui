@@ -26,6 +26,7 @@ export {
   type PopoverProps,
   type PopoverTriggerProps,
 } from './components/Popover/Popover';
+export { Radio, RadioGroup, type RadioGroupProps, type RadioProps } from './components/Radio/Radio';
 export {
   Select,
   type SelectGroupLabelProps,

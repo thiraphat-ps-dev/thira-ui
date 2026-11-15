@@ -1,0 +1,130 @@
+@layer thira {
+  .field {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--thira-space-2);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    line-height: 1.25rem;
+  }
+
+  .radio {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1.125rem;
+    height: 1.125rem;
+    /* Center the circle on the label's first line. */
+    margin: calc((1.25rem - 1.125rem) / 2) 0 0;
+    padding: 0;
+    /* --thira-text-muted, not --thira-border-strong: the edge needs 3:1 non-text contrast. */
+    border: 1.5px solid var(--thira-text-muted);
+    border-radius: 50%;
+    background: var(--thira-surface);
+    color: var(--thira-on-accent);
+    cursor: pointer;
+    transition:
+      background-color var(--thira-duration) var(--thira-ease),
+      border-color var(--thira-duration) var(--thira-ease),
+      box-shadow var(--thira-duration) var(--thira-ease);
+
+    &:hover:not([data-disabled]) {
+      border-color: var(--thira-text);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[data-checked] {
+      border-color: var(--thira-accent);
+      background: var(--thira-accent);
+    }
+
+    &[data-checked]:hover:not([data-disabled]) {
+      border-color: var(--thira-accent-hover);
+      background: var(--thira-accent-hover);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  .indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .label {
+    font-weight: 500;
+    color: var(--thira-text);
+    cursor: pointer;
+  }
+
+  .description {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .field:has(.radio[data-disabled]) .label {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-3);
+    font-family: var(--thira-font);
+  }
+
+  .groupLabel {
+    font-size: var(--thira-text-sm);
+    font-weight: 600;
+    color: var(--thira-text);
+  }
+
+  .required {
+    margin-inline-start: 2px;
+    color: var(--thira-danger);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-3);
+
+    &[data-orientation='horizontal'] {
+      flex-flow: row wrap;
+      column-gap: var(--thira-space-5);
+    }
+  }
+
+  .group[aria-invalid='true'] .radio:not([data-checked]) {
+    border-color: var(--thira-danger);
+  }
+
+  .message {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .error {
+    color: var(--thira-danger);
+  }
+}

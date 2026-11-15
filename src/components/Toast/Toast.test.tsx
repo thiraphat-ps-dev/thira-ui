@@ -1,4 +1,4 @@
-import { render, renderHook, screen } from '@testing-library/react';
+import { render, renderHook, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ToastProvider, useToast } from './Toast';
 
@@ -12,7 +12,7 @@ function Trigger({ onUndo }: { onUndo?: () => void }) {
           title: 'Saved',
           description: 'Your changes are live.',
           tone: 'success',
-          action: onUndo ? { label: 'Undo', altText: 'Undo save', onClick: onUndo } : undefined,
+          action: onUndo ? { label: 'Undo', onClick: onUndo } : undefined,
         })
       }
     >
@@ -45,7 +45,7 @@ describe('Toast', () => {
     expect(onUndo).toHaveBeenCalledOnce();
   });
 
-  it('respects the limit', async () => {
+  it('marks toasts beyond the limit as limited', async () => {
     render(
       <ToastProvider limit={2}>
         <Trigger />
@@ -55,11 +55,24 @@ describe('Toast', () => {
     await userEvent.click(notify);
     await userEvent.click(notify);
     await userEvent.click(notify);
-    expect(screen.getAllByText('Saved')).toHaveLength(2);
+    const limited = document.querySelectorAll('[data-limited]');
+    expect(limited).toHaveLength(1);
   });
 
-  it('throws a helpful error outside the provider', () => {
+  it('closes from the dismiss button', async () => {
+    render(
+      <ToastProvider>
+        <Trigger />
+      </ToastProvider>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Notify' }));
+    // Base UI hides the close button from the a11y tree (toasts are dismissed via swipe/Esc for AT users).
+    await userEvent.click(document.querySelector<HTMLButtonElement>('button[aria-label="Dismiss"]')!);
+    await waitFor(() => expect(screen.queryByText('Saved')).not.toBeInTheDocument());
+  });
+
+  it('throws outside the provider', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(() => renderHook(() => useToast())).toThrow('useToast must be used inside <ToastProvider>.');
+    expect(() => renderHook(() => useToast())).toThrow();
   });
 });

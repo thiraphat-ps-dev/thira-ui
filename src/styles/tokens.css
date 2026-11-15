@@ -1,65 +1,87 @@
-/*
- * thira-ui design tokens
- * Override any --thira-* variable on :root (or any subtree) to theme the library.
- * Dark mode follows the OS by default; force it with data-theme="dark" | "light".
- */
+/* Declare the layer up front: any unlayered CSS from apps always wins over thira-ui. */
+@layer thira;
 
-:root {
-  color-scheme: light dark;
+@layer thira {
+  /*
+   * thira-ui design tokens
+   * Override any --thira-* variable on :root (or any subtree) to theme the library.
+   * Dark mode follows the OS by default; force it with data-theme="dark" | "light".
+   */
 
-  /* Brand */
-  --thira-hue: 250;
-  --thira-accent: oklch(55% 0.2 var(--thira-hue));
-  --thira-accent-hover: oklch(from var(--thira-accent) calc(l - 0.06) c h);
-  --thira-accent-soft: oklch(from var(--thira-accent) l c h / 0.12);
-  --thira-on-accent: #fff;
+  :root {
+    color-scheme: light dark;
 
-  /* Neutrals */
-  --thira-bg: oklch(99% 0.003 var(--thira-hue));
-  --thira-surface: #fff;
-  --thira-surface-muted: oklch(96.5% 0.006 var(--thira-hue));
-  --thira-border: oklch(90% 0.01 var(--thira-hue));
-  --thira-border-strong: oklch(80% 0.015 var(--thira-hue));
-  --thira-text: oklch(22% 0.02 var(--thira-hue));
-  --thira-text-muted: oklch(48% 0.02 var(--thira-hue));
+    /* Brand */
+    --thira-hue: 250;
+    --thira-accent: oklch(55% 0.2 var(--thira-hue));
+    --thira-accent-hover: oklch(from var(--thira-accent) calc(l - 0.06) c h);
+    --thira-accent-soft: oklch(from var(--thira-accent) l c h / 0.12);
+    --thira-on-accent: #fff;
 
-  /* Status */
-  --thira-danger: oklch(56% 0.21 25);
-  --thira-danger-hover: oklch(from var(--thira-danger) calc(l - 0.06) c h);
-  --thira-danger-soft: oklch(from var(--thira-danger) l c h / 0.12);
-  --thira-success: oklch(58% 0.15 150);
+    /* Neutrals */
+    --thira-bg: oklch(99% 0.003 var(--thira-hue));
+    --thira-surface: #fff;
+    --thira-surface-muted: oklch(96.5% 0.006 var(--thira-hue));
+    --thira-border: oklch(90% 0.01 var(--thira-hue));
+    --thira-border-strong: oklch(80% 0.015 var(--thira-hue));
+    --thira-text: oklch(22% 0.02 var(--thira-hue));
+    --thira-text-muted: oklch(48% 0.02 var(--thira-hue));
 
-  /* Shape */
-  --thira-radius-sm: 6px;
-  --thira-radius-md: 10px;
-  --thira-radius-lg: 16px;
-  --thira-radius-full: 999px;
+    /* Status */
+    --thira-danger: oklch(56% 0.21 25);
+    --thira-danger-hover: oklch(from var(--thira-danger) calc(l - 0.06) c h);
+    --thira-danger-soft: oklch(from var(--thira-danger) l c h / 0.12);
+    --thira-success: oklch(58% 0.15 150);
 
-  /* Spacing (4px scale) */
-  --thira-space-1: 0.25rem;
-  --thira-space-2: 0.5rem;
-  --thira-space-3: 0.75rem;
-  --thira-space-4: 1rem;
-  --thira-space-5: 1.25rem;
-  --thira-space-6: 1.5rem;
+    /* Shape */
+    --thira-radius-sm: 6px;
+    --thira-radius-md: 10px;
+    --thira-radius-lg: 16px;
+    --thira-radius-full: 999px;
 
-  /* Type */
-  --thira-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
-  --thira-text-sm: 0.875rem;
-  --thira-text-md: 1rem;
-  --thira-text-lg: 1.125rem;
+    /* Spacing (4px scale) */
+    --thira-space-1: 0.25rem;
+    --thira-space-2: 0.5rem;
+    --thira-space-3: 0.75rem;
+    --thira-space-4: 1rem;
+    --thira-space-5: 1.25rem;
+    --thira-space-6: 1.5rem;
 
-  /* Depth & motion */
-  --thira-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
-  --thira-shadow-md: 0 4px 16px oklch(0% 0 0 / 0.08), 0 1px 3px oklch(0% 0 0 / 0.06);
-  --thira-shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.16);
-  --thira-focus-ring: 0 0 0 3px oklch(from var(--thira-accent) l c h / 0.35);
-  --thira-ease: cubic-bezier(0.2, 0, 0, 1);
-  --thira-duration: 160ms;
-}
+    /* Type */
+    --thira-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+    --thira-text-sm: 0.875rem;
+    --thira-text-md: 1rem;
+    --thira-text-lg: 1.125rem;
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+    /* Depth & motion */
+    --thira-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
+    --thira-shadow-md: 0 4px 16px oklch(0% 0 0 / 0.08), 0 1px 3px oklch(0% 0 0 / 0.06);
+    --thira-shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.16);
+    --thira-focus-ring: 0 0 0 3px oklch(from var(--thira-accent) l c h / 0.35);
+    --thira-ease: cubic-bezier(0.2, 0, 0, 1);
+    --thira-duration: 160ms;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --thira-accent: oklch(68% 0.17 var(--thira-hue));
+      --thira-accent-hover: oklch(from var(--thira-accent) calc(l + 0.05) c h);
+      --thira-on-accent: oklch(15% 0.02 var(--thira-hue));
+      --thira-bg: oklch(16% 0.012 var(--thira-hue));
+      --thira-surface: oklch(20% 0.014 var(--thira-hue));
+      --thira-surface-muted: oklch(24% 0.016 var(--thira-hue));
+      --thira-border: oklch(30% 0.018 var(--thira-hue));
+      --thira-border-strong: oklch(40% 0.02 var(--thira-hue));
+      --thira-text: oklch(95% 0.008 var(--thira-hue));
+      --thira-text-muted: oklch(72% 0.015 var(--thira-hue));
+      --thira-danger: oklch(68% 0.18 25);
+      --thira-danger-hover: oklch(from var(--thira-danger) calc(l + 0.05) c h);
+      --thira-shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.5);
+    }
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
     --thira-accent: oklch(68% 0.17 var(--thira-hue));
     --thira-accent-hover: oklch(from var(--thira-accent) calc(l + 0.05) c h);
     --thira-on-accent: oklch(15% 0.02 var(--thira-hue));
@@ -74,31 +96,14 @@
     --thira-danger-hover: oklch(from var(--thira-danger) calc(l + 0.05) c h);
     --thira-shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.5);
   }
-}
 
-:root[data-theme='dark'] {
-  color-scheme: dark;
-  --thira-accent: oklch(68% 0.17 var(--thira-hue));
-  --thira-accent-hover: oklch(from var(--thira-accent) calc(l + 0.05) c h);
-  --thira-on-accent: oklch(15% 0.02 var(--thira-hue));
-  --thira-bg: oklch(16% 0.012 var(--thira-hue));
-  --thira-surface: oklch(20% 0.014 var(--thira-hue));
-  --thira-surface-muted: oklch(24% 0.016 var(--thira-hue));
-  --thira-border: oklch(30% 0.018 var(--thira-hue));
-  --thira-border-strong: oklch(40% 0.02 var(--thira-hue));
-  --thira-text: oklch(95% 0.008 var(--thira-hue));
-  --thira-text-muted: oklch(72% 0.015 var(--thira-hue));
-  --thira-danger: oklch(68% 0.18 25);
-  --thira-danger-hover: oklch(from var(--thira-danger) calc(l + 0.05) c h);
-  --thira-shadow-lg: 0 16px 48px oklch(0% 0 0 / 0.5);
-}
+  :root[data-theme='light'] {
+    color-scheme: light;
+  }
 
-:root[data-theme='light'] {
-  color-scheme: light;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --thira-duration: 0ms;
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --thira-duration: 0ms;
+    }
   }
 }

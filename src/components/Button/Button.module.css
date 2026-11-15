@@ -1,103 +1,105 @@
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--thira-space-2);
-  border: 1px solid transparent;
-  border-radius: var(--thira-radius-md);
-  font: 500 var(--thira-text-sm) / 1 var(--thira-font);
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition:
-    background-color var(--thira-duration) var(--thira-ease),
-    border-color var(--thira-duration) var(--thira-ease),
-    color var(--thira-duration) var(--thira-ease),
-    transform var(--thira-duration) var(--thira-ease);
+@layer thira {
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--thira-space-2);
+    border: 1px solid transparent;
+    border-radius: var(--thira-radius-md);
+    font: 500 var(--thira-text-sm) / 1 var(--thira-font);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--thira-duration) var(--thira-ease),
+      border-color var(--thira-duration) var(--thira-ease),
+      color var(--thira-duration) var(--thira-ease),
+      transform var(--thira-duration) var(--thira-ease);
 
-  &:focus-visible {
-    outline: none;
-    box-shadow: var(--thira-focus-ring);
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &:active:not([data-disabled]) {
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &[data-disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &[data-loading] {
+      opacity: 0.8;
+    }
   }
 
-  &:active:not(:disabled) {
-    transform: scale(0.98);
+  /* Sizes */
+  .sm {
+    height: 2rem;
+    padding-inline: var(--thira-space-3);
+  }
+  .md {
+    height: 2.5rem;
+    padding-inline: var(--thira-space-4);
+  }
+  .lg {
+    height: 3rem;
+    padding-inline: var(--thira-space-6);
+    font-size: var(--thira-text-md);
   }
 
-  &:disabled,
-  &[aria-disabled='true'] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
+  /* Variants */
+  .solid {
+    background: var(--thira-accent);
+    color: var(--thira-on-accent);
+    &:hover {
+      background: var(--thira-accent-hover);
+    }
   }
 
-  &[data-loading] {
-    opacity: 0.8;
+  .outline {
+    background: var(--thira-surface);
+    border-color: var(--thira-border-strong);
+    color: var(--thira-text);
+    &:hover {
+      background: var(--thira-surface-muted);
+    }
   }
-}
 
-/* Sizes */
-.sm {
-  height: 2rem;
-  padding-inline: var(--thira-space-3);
-}
-.md {
-  height: 2.5rem;
-  padding-inline: var(--thira-space-4);
-}
-.lg {
-  height: 3rem;
-  padding-inline: var(--thira-space-6);
-  font-size: var(--thira-text-md);
-}
-
-/* Variants */
-.solid {
-  background: var(--thira-accent);
-  color: var(--thira-on-accent);
-  &:hover {
-    background: var(--thira-accent-hover);
+  .ghost {
+    background: transparent;
+    color: var(--thira-text);
+    &:hover {
+      background: var(--thira-accent-soft);
+      color: var(--thira-accent);
+    }
   }
-}
 
-.outline {
-  background: var(--thira-surface);
-  border-color: var(--thira-border-strong);
-  color: var(--thira-text);
-  &:hover {
-    background: var(--thira-surface-muted);
+  .danger {
+    background: var(--thira-danger);
+    color: #fff;
+    &:hover {
+      background: var(--thira-danger-hover);
+    }
   }
-}
 
-.ghost {
-  background: transparent;
-  color: var(--thira-text);
-  &:hover {
-    background: var(--thira-accent-soft);
-    color: var(--thira-accent);
+  .spinner {
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: var(--thira-radius-full);
+    animation: thira-spin 0.7s linear infinite;
   }
-}
 
-.danger {
-  background: var(--thira-danger);
-  color: #fff;
-  &:hover {
-    background: var(--thira-danger-hover);
-  }
-}
-
-.spinner {
-  width: 1em;
-  height: 1em;
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  border-radius: var(--thira-radius-full);
-  animation: thira-spin 0.7s linear infinite;
-}
-
-@keyframes thira-spin {
-  to {
-    rotate: 360deg;
+  @keyframes thira-spin {
+    to {
+      rotate: 360deg;
+    }
   }
 }

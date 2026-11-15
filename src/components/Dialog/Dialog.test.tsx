@@ -6,14 +6,10 @@ import { Dialog } from './Dialog';
 function Example() {
   return (
     <Dialog>
-      <Dialog.Trigger asChild>
-        <Button>Open</Button>
-      </Dialog.Trigger>
+      <Dialog.Trigger render={<Button />}>Open</Dialog.Trigger>
       <Dialog.Content title="Delete project?" description="This cannot be undone.">
         <Dialog.Footer>
-          <Dialog.Close asChild>
-            <Button variant="outline">Cancel</Button>
-          </Dialog.Close>
+          <Dialog.Close render={<Button variant="outline" />}>Cancel</Dialog.Close>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>

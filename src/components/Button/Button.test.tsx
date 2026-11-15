@@ -24,7 +24,8 @@ describe('Button', () => {
       </Button>,
     );
     const button = screen.getByRole('button');
-    expect(button).toBeDisabled();
+    // Stays focusable (not natively disabled) so assistive tech can announce the busy state.
+    expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(button).toHaveAttribute('aria-busy', 'true');
     await userEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
@@ -40,10 +41,10 @@ describe('Button', () => {
     expect(button).toHaveClass('danger', 'lg');
   });
 
-  it('renders as its child with asChild', () => {
+  it('renders as a link with the render prop', () => {
     render(
-      <Button asChild>
-        <a href="/docs">Docs</a>
+      <Button render={<a href="/docs" />}>
+        Docs
       </Button>,
     );
     const link = screen.getByRole('link', { name: 'Docs' });
@@ -52,7 +53,12 @@ describe('Button', () => {
     expect(link).not.toHaveAttribute('type');
   });
 
-  it('forwards refs', () => {
+  it('is natively disabled when disabled', () => {
+    render(<Button disabled>Save</Button>);
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+
+  it('accepts ref as a prop (React 19)', () => {
     const ref = createRef<HTMLButtonElement>();
     render(<Button ref={ref}>Save</Button>);
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);

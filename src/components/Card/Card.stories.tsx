@@ -50,3 +50,16 @@ export const Interactive: Story = {
   ),
   args: { variant: 'elevated' },
 };
+
+/** `Card.Title` is an `<h3>` by default. Use `render` to fit your page's heading outline. */
+export const HeadingLevel: Story = {
+  render: (args) => (
+    <Card {...args} style={{ width: 360 }}>
+      <Card.Header>
+        <Card.Title render={<h2 />}>Team plan</Card.Title>
+        <Card.Description>Rendered as an h2.</Card.Description>
+      </Card.Header>
+      <Card.Body>Unlimited projects and shared workspaces for growing teams.</Card.Body>
+    </Card>
+  ),
+};

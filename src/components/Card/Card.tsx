@@ -1,3 +1,5 @@
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 import type { ComponentProps } from 'react';
 import { cx } from '../../utils/cx';
 import styles from './Card.module.css';
@@ -17,12 +19,20 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cx(styles.header, className)} {...props} />;
 }
 
-function CardTitle({ className, children, ...props }: ComponentProps<'h3'>) {
-  return (
-    <h3 className={cx(styles.title, className)} {...props}>
-      {children}
-    </h3>
-  );
+export interface CardTitleProps extends Omit<useRender.ComponentProps<'h3'>, 'className'> {
+  className?: string;
+}
+
+/**
+ * Renders an `<h3>` by default. Match your page outline with `render`:
+ * `<Card.Title render={<h2 />}>…</Card.Title>`
+ */
+function CardTitle({ render, className, ...props }: CardTitleProps) {
+  return useRender({
+    defaultTagName: 'h3',
+    render,
+    props: mergeProps<'h3'>({ className: cx(styles.title, className) }, props),
+  });
 }
 
 function CardDescription({ className, ...props }: ComponentProps<'p'>) {

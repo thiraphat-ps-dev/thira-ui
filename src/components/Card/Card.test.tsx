@@ -27,6 +27,17 @@ describe('Card', () => {
     expect(heading.tagName).toBe('H3');
   });
 
+  it('lets the title render a different heading level', () => {
+    render(
+      <Card.Title render={<h2 />} className="custom-title">
+        Team plan
+      </Card.Title>,
+    );
+    const heading = screen.getByRole('heading', { level: 2, name: 'Team plan' });
+    expect(heading.tagName).toBe('H2');
+    expect(heading).toHaveClass('title', 'custom-title');
+  });
+
   it('renders the description as a paragraph and the other parts as divs', () => {
     render(
       <Card>

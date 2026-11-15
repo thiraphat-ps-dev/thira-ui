@@ -21,18 +21,18 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 
 ## Components
 
-| Component  | Notes                                                                                                        |
-| ---------- | ------------------------------------------------------------------------------------------------------------ |
-| `Button`   | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links              |
-| `Input`    | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                      |
-| `Checkbox` | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox |
-| `Switch`   | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware           |
-| `Card`     | Compound API: `Card.Header`, `Card.Title`, `Card.Description`, `Card.Body`, `Card.Footer`                    |
-| `Dialog`   | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                             |
-| `Tabs`     | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator      |
-| `Tooltip`  | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                           |
-| `Toast`    | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                              |
-| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| Component  | Notes                                                                                                                  |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Button`   | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links                        |
+| `Input`    | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                                |
+| `Checkbox` | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox           |
+| `Switch`   | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware                     |
+| `Card`     | Compound API: `Card.Header`, `Card.Title` (`render` for heading level), `Card.Description`, `Card.Body`, `Card.Footer` |
+| `Dialog`   | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                                       |
+| `Tabs`     | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator                |
+| `Tooltip`  | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                                     |
+| `Toast`    | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------           |
 
 ## Install
 
@@ -75,6 +75,29 @@ function DeleteProject() {
     </Dialog>
   );
 }
+```
+
+## Using with Astro (and other server-rendered frameworks)
+
+thira-ui components render to static HTML on the server. In Astro they need no `client:*` directive unless they're interactive (Dialog, Toast, Tabs, Tooltip…).
+
+One gotcha: the `render` prop expects a **React element**. Inside an `.astro` file, `<a href="/docs" />` is compiled as Astro markup, not React, and fails with _"Element type is invalid"_. Wrap that usage in a small `.tsx` component:
+
+```tsx
+// CtaLinks.tsx
+import { Button } from 'thira-ui';
+
+export function CtaLinks() {
+  return <Button render={<a href="/docs" />}>Read the docs</Button>;
+}
+```
+
+```astro
+---
+import 'thira-ui/styles.css';
+import { CtaLinks } from '../components/CtaLinks';
+---
+<CtaLinks />
 ```
 
 ## Theming

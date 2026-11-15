@@ -63,7 +63,7 @@ docs/banner.jpg            README banner
    - Style state through data attributes Base UI provides (`[data-disabled]`, `[data-starting-style]`, `[data-ending-style]`, …).
    - Class names in the build are `thira-<File>-module__<class>` (see `vite.config.ts`).
 4. **Theming:** dark mode follows the OS; `<html data-theme="dark|light">` forces it. To theme a subtree, the element needs `data-thira-theme` so derived tokens recompute there (custom properties resolve where they're declared).
-5. **Compound components** are built with `Object.assign(Root, { Part: … })` (see `Card`, `Dialog`).
+5. **Compound components** are built with `Object.assign(Root, { Part: … })` (see `Card`, `Dialog`). Parts that may need a different element (e.g. `Card.Title` heading level) take a `render` prop via `useRender` + `mergeProps`.
 6. **Button**: native `<button>` goes through Base UI `Button`; with `render` (e.g. a link) it goes through `useRender` so the element keeps its own role. Don't regress this — a link must not get `role="button"`.
 7. **Toast** API is `ToastProvider` + `useToast()` (`toast()` / `dismiss()`), wrapping Base UI's toast manager.
 
@@ -93,4 +93,3 @@ docs/banner.jpg            README banner
 
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
 - Not yet: more components (Select, Popover, Menu, Radio, Textarea).
-- `Card.Title` is always an `<h3>` — consider a way to change the heading level.

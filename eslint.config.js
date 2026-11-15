@@ -53,8 +53,10 @@ export default tseslint.config(
   {
     files: ['**/*.stories.tsx', '**/*.test.tsx'],
     rules: {
-      // `render={<a href="…" />}` passes an empty anchor; Button fills in its content at runtime.
+      // `render={<a href="…" />}` / `render={<h2 />}` pass an empty element as a tag template;
+      // the component fills in its content at runtime.
       'jsx-a11y/anchor-has-content': 'off',
+      'jsx-a11y/heading-has-content': 'off',
     },
   },
 

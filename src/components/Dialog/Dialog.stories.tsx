@@ -41,8 +41,8 @@ export const WithForm: Story = {
             e.preventDefault();
           }}
         >
-          <Input label="Name" defaultValue="Thiraphat Phutson" />
-          <Input label="Website" defaultValue="https://thiraphat-ps-dev.github.io/" />
+          <Input label="Name" defaultValue="Alex Morgan" />
+          <Input label="Website" defaultValue="https://example.com" />
         </form>
         <Dialog.Footer>
           <Dialog.Close render={<Button variant="outline" />}>Cancel</Dialog.Close>
@@ -68,7 +68,7 @@ export const Controlled: Story = {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <Dialog.Trigger render={<Button variant="outline" />}>Open controlled</Dialog.Trigger>
-        <Dialog.Content title="Publish article?" description="It will appear on your profile within 6 hours.">
+        <Dialog.Content title="Publish changes?" description="Your changes will be visible to everyone.">
           <Dialog.Footer>
             <Button
               variant="ghost"

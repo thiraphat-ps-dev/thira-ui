@@ -11,18 +11,18 @@ const meta = {
   render: (args) => (
     <Card {...args} style={{ width: 360 }}>
       <Card.Header>
-        <Card.Title>Nine Swords</Card.Title>
-        <Card.Description>Pixel isometric wuxia MMORPG</Card.Description>
+        <Card.Title>Team plan</Card.Title>
+        <Card.Description>For growing teams</Card.Description>
       </Card.Header>
       <Card.Body>
-        A browser-based MMORPG built with TypeScript. Explore an ink-wash world, master nine sword styles, and duel
-        other players in real time.
+        Unlimited projects, shared workspaces and priority support. Invite up to 20 members and manage roles from one
+        place.
       </Card.Body>
       <Card.Footer>
         <Button variant="ghost" size="sm">
           Details
         </Button>
-        <Button size="sm">Play now</Button>
+        <Button size="sm">Upgrade</Button>
       </Card.Footer>
     </Card>
   ),
@@ -42,10 +42,10 @@ export const Interactive: Story = {
   render: (args) => (
     <Card {...args} interactive tabIndex={0} style={{ width: 300 }}>
       <Card.Header>
-        <Card.Title>Modern CSS Unlocked</Card.Title>
-        <Card.Description>5 features transforming web UI</Card.Description>
+        <Card.Title>Getting started</Card.Title>
+        <Card.Description>Set up your first project in 5 minutes</Card.Description>
       </Card.Header>
-      <Card.Body>Less JavaScript, less SCSS — and what to use instead.</Card.Body>
+      <Card.Body>Install the package, import the styles and render your first component.</Card.Body>
     </Card>
   ),
   args: { variant: 'elevated' },

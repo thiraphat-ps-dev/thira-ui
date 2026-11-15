@@ -64,7 +64,7 @@ export const Disabled: Story = {
 
 /** `render` swaps the element but keeps button styles — a link stays a link for screen readers. */
 export const AsLink: Story = {
-  args: { render: <a href="https://github.com/thiraphat-ps-dev" />, children: 'Visit GitHub', variant: 'outline' },
+  args: { render: <a href="https://example.com" />, children: 'Visit website', variant: 'outline' },
 };
 
 /** Theme any subtree with `data-thira-theme` + a token override — no props, no JS. */

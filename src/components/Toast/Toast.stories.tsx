@@ -21,7 +21,7 @@ function Demo() {
       </Button>
       <Button
         variant="outline"
-        onClick={() => toast({ title: 'Published!', description: 'Your article is live on Medium.', tone: 'success' })}
+        onClick={() => toast({ title: 'Published!', description: 'Your changes are now live.', tone: 'success' })}
       >
         Success
       </Button>

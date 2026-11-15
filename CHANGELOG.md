@@ -1,5 +1,14 @@
 # thira-ui
 
+## 0.5.0
+
+### Minor Changes
+
+- 3f8d670: Add `Badge`: a small status label with five tones (neutral, accent, success, warning, danger), soft/solid/outline variants, two sizes, an optional dot and a `render` prop, plus new `--thira-warning` and `--thira-on-success` tokens.
+- 3fcef94: Add `Spinner` (an announced status or a decorative loading indicator) and `Skeleton` (text, rect and circle placeholders with a reduced-motion-aware shimmer); `Button`'s loading state now renders `Spinner`.
+- e79fe2b: Add `Radio` and `RadioGroup`: a labelled single-choice group with descriptions, hint/error text, arrow-key selection and a horizontal layout.
+- 7a4fb26: Add `Textarea` with label, hint and error wiring, CSS-only auto-resize (`field-sizing: content`) and an optional character counter.
+
 ## 0.4.0
 
 ### Minor Changes

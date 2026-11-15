@@ -89,6 +89,9 @@ docs/banner.jpg            README banner
 - Portaled popups (Menu, Select, Popover) sit outside any landmark, so the jsdom axe matcher turns off axe's `region` rule (Storybook's a11y addon does the same by default).
 - Select, Menu and Popover stories disable `aria-hidden-focus`: while the popup is open Base UI adds `aria-hidden` focus-guard spans with `tabindex=0` that forward focus. Same reasoning as Toast.
 - Layering: Dialog 50–51, Menu/Popover 55, Tooltip 60. Keep new floating parts in this order.
+- Status colours: `--thira-success` / `--thira-warning` / `--thira-danger` each have `--thira-on-*` (text on solid) and `*-soft` (12% tint). White on the success green is only ~4.2:1, so `--thira-on-success` is dark. Badge's soft/outline text mixes the tone with `--thira-text` (warning needs 50%) to stay ≥ 4.5:1 in both themes.
+- Button's loading state renders `<Spinner label={null} />` (decorative; the button carries `aria-busy`). Spinner pulses instead of spinning under reduced motion.
+- `role="status"` doesn't take its name from content, so Spinner points `aria-labelledby` at its hidden label.
 - Select builds its value→label lookup by walking its children for `Select.Item`; items wrapped in custom components need the `items` prop.
 - jsdom lacks some browser APIs; Base UI's toast close button is `aria-hidden`, so tests click it via its `aria-label`.
 - Line endings are LF everywhere (`.gitattributes`, `.editorconfig`, Prettier).
@@ -96,4 +99,4 @@ docs/banner.jpg            README banner
 ## Known gaps / ideas
 
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
-- Not yet: more components (Radio, Textarea, Combobox, DatePicker).
+- Not yet: Combobox, DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.

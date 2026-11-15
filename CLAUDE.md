@@ -82,4 +82,5 @@ docs/banner.jpg            README banner
 ## Known gaps / ideas
 
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
-- Not yet: Changesets/release flow, npm publish, more components (Select, Tabs, Tooltip, Checkbox, Switch).
+- Not yet: Changesets/release flow, npm publish, more components (Select, Popover, Menu, Radio, Textarea).
+- `Card.Title` is always an `<h3>` — consider a way to change the heading level.

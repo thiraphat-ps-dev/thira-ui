@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, screen } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Dialog } from './Dialog';
@@ -11,6 +12,17 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+/**
+ * Opens the dialog so the Accessibility panel checks the open state (axe runs after `play`).
+ * Waits for the enter transition so contrast isn't measured mid-fade.
+ */
+const openDialog: Story['play'] = async ({ canvas, userEvent }) => {
+  await userEvent.click(canvas.getByRole('button'));
+  const dialog = await screen.findByRole('dialog');
+  await Promise.allSettled(document.getAnimations().map((a) => a.finished));
+  await expect(dialog).toBeVisible();
+};
 
 export const Confirm: Story = {
   render: () => (
@@ -28,6 +40,7 @@ export const Confirm: Story = {
       </Dialog.Content>
     </Dialog>
   ),
+  play: openDialog,
 };
 
 export const WithForm: Story = {
@@ -51,6 +64,7 @@ export const WithForm: Story = {
       </Dialog.Content>
     </Dialog>
   ),
+  play: openDialog,
 };
 
 /** Control `open` yourself, e.g. to close after an async save. */

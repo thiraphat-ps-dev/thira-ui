@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, screen } from 'storybook/test';
 import { Button } from '../Button/Button';
 import { ToastProvider, useToast } from './Toast';
 
@@ -54,4 +55,14 @@ function Demo() {
 export const Playground: Story = {
   args: { children: null },
   render: () => <Demo />,
+  // Fires one toast per tone so the Accessibility panel checks visible toasts (axe runs after `play`).
+  // Waits for the enter transition so contrast isn't measured mid-fade.
+  play: async ({ canvas, userEvent }) => {
+    for (const name of ['Neutral', 'Success', 'Danger']) {
+      await userEvent.click(canvas.getByRole('button', { name }));
+    }
+    await screen.findByText('Upload failed');
+    await Promise.allSettled(document.getAnimations().map((a) => a.finished));
+    await expect(screen.getByText('Draft saved')).toBeVisible();
+  },
 };

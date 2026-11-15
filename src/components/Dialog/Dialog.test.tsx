@@ -41,4 +41,12 @@ describe('Dialog', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Close' }));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('has no axe violations when open', async () => {
+    render(<Example />);
+    await userEvent.click(screen.getByRole('button', { name: 'Open' }));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    // document.body, because the dialog is portaled outside the render container.
+    await expect(document.body).toHaveNoAxeViolations();
+  });
 });

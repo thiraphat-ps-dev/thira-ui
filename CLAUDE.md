@@ -66,6 +66,7 @@ docs/banner.jpg            README banner
 - [ ] Tests query by role/label (`getByRole`, `getByLabelText`), not by class or test id.
 - [ ] Stories cover variants/states; check light **and** dark with the theme toolbar.
 - [ ] Accessibility: no axe violations in either theme (Storybook "Accessibility" tab). Text on colored backgrounds must reach **4.5:1** — use an `--thira-on-*` token if needed.
+- [ ] Overlays/transient UI (dialogs, toasts, popups): add a story `play` that opens it (Storybook's axe runs after `play`), and a test with `await expect(document.body).toHaveNoAxeViolations()` (matcher in `src/test-setup.ts`; `color-contrast` is off there because jsdom can't compute it).
 - [ ] **Sample content in stories/tests/docs must be generic** (e.g. "Alex Morgan", example.com, "Team plan"). Never use the maintainer's name, links, or their other projects.
 - [ ] Add a row to the Components table in `README.md`.
 - [ ] `npm run check` and `npm run build` pass; check `dist/index.js` size didn't jump (a big jump usually means a dependency got bundled — keep `react`, `react-dom`, `@base-ui/*` external in `vite.config.ts`).
@@ -81,5 +82,5 @@ docs/banner.jpg            README banner
 ## Known gaps / ideas
 
 - `Card` has no test file yet.
-- axe only checks each story's initial state — open Dialog/Toast states aren't checked automatically.
+- Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
 - Not yet: Changesets/release flow, npm publish, more components (Select, Tabs, Tooltip, Checkbox, Switch).

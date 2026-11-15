@@ -76,6 +76,7 @@ docs/banner.jpg            README banner
 - **Windows + Vitest:** run from a path with an uppercase drive letter (`C:\…`). From lowercase `c:` Vitest loads twice and fails with "Invalid Chai property" / "failed to find the current suite". In Git Bash use `cd /C/thira-works/projects/thira-ui`.
 - **TypeScript is pinned to 6.0** because typescript-eslint doesn't support TS 7 yet. **ESLint is pinned to 9** because `eslint-plugin-jsx-a11y` doesn't support ESLint 10 yet. Revisit when they do.
 - ESLint runs `strictTypeChecked` — prefer fixing the code over disabling rules; if a rule must be relaxed, scope it narrowly in `eslint.config.js` with a comment.
+- Toast: Base UI sets `aria-hidden` on high-priority toasts (announced via a separate live region) and on the close button until the viewport is hovered/focused; both clear on focus. axe's `aria-hidden-focus` is disabled for the Toast stories for that reason — don't "fix" it by overriding Base UI.
 - jsdom lacks some browser APIs; Base UI's toast close button is `aria-hidden`, so tests click it via its `aria-label`.
 - Line endings are LF everywhere (`.gitattributes`, `.editorconfig`, Prettier).
 

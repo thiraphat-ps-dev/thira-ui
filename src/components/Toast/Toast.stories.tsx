@@ -7,7 +7,21 @@ import { ToastProvider, useToast } from './Toast';
 const meta = {
   title: 'Components/Toast',
   component: ToastProvider,
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    a11y: {
+      config: {
+        rules: [
+          // Intentional Base UI behavior, not a bug: high-priority toasts are aria-hidden
+          // (they're announced through a separate live region to avoid double reading),
+          // and the close button is aria-hidden until the viewport is hovered or focused.
+          // Both drop aria-hidden as soon as they receive focus, which axe's static scan
+          // can't see.
+          { id: 'aria-hidden-focus', enabled: false },
+        ],
+      },
+    },
+  },
 } satisfies Meta<typeof ToastProvider>;
 
 export default meta;

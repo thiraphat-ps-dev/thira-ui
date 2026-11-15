@@ -44,6 +44,20 @@ npm install thira-ui
 
 Requires React 19+.
 
+### Font (optional)
+
+thira-ui's default font stack starts with [Thira Sans](https://github.com/thiraphat-ps-dev/thira-sans), a Thai + Latin variable font. It isn't bundled, so nothing extra downloads unless you opt in:
+
+```bash
+npm install thira-sans
+```
+
+```tsx
+import 'thira-sans'; // variable font, weights 100–700
+```
+
+Without it, components fall back to the system UI font (with Noto Sans Thai for Thai text).
+
 ## Usage
 
 ```tsx

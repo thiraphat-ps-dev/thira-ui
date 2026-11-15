@@ -1,5 +1,6 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
 import { useEffect } from 'react';
+import 'thira-sans/variable.css';
 import '../src/styles/tokens.css';
 import { ToastProvider } from '../src';
 import './preview.css';

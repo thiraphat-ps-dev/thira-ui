@@ -52,7 +52,7 @@
     --thira-space-6: 1.5rem;
 
     /* Type */
-    --thira-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+    --thira-font: 'Thira Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
     --thira-text-sm: 0.875rem;
     --thira-text-md: 1rem;
     --thira-text-lg: 1.125rem;

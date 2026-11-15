@@ -80,6 +80,5 @@ docs/banner.jpg            README banner
 
 ## Known gaps / ideas
 
-- `Card` has no test file yet.
 - axe only checks each story's initial state — open Dialog/Toast states aren't checked automatically.
 - Not yet: Changesets/release flow, npm publish, more components (Select, Tabs, Tooltip, Checkbox, Switch).

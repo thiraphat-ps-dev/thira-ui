@@ -19,3 +19,11 @@ export {
   type ToastProviderProps,
   type ToastTone,
 } from './components/Toast/Toast';
+export {
+  Tooltip,
+  TooltipProvider,
+  type TooltipContentProps,
+  type TooltipProps,
+  type TooltipProviderProps,
+  type TooltipTriggerProps,
+} from './components/Tooltip/Tooltip';

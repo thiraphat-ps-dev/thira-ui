@@ -1,0 +1,73 @@
+@layer thira {
+  .positioner {
+    z-index: 60;
+  }
+
+  /* Inverted surface (dark in light theme, light in dark theme) for clear contrast with the page. */
+  .popup {
+    --tooltip-bg: var(--thira-text);
+
+    position: relative; /* anchors the arrow */
+    box-sizing: border-box;
+    max-width: min(20rem, var(--available-width));
+    padding: var(--thira-space-1) var(--thira-space-2);
+    border-radius: var(--thira-radius-sm);
+    background: var(--tooltip-bg);
+    color: var(--thira-surface);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    line-height: 1.4;
+    box-shadow: var(--thira-shadow-md);
+    transform-origin: var(--transform-origin);
+    transition:
+      opacity var(--thira-duration) var(--thira-ease),
+      scale var(--thira-duration) var(--thira-ease);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+      scale: 0.96;
+    }
+
+    /* Skip the animation when moving between tooltips in a group or dismissing with Esc. */
+    &[data-instant] {
+      transition: none;
+    }
+  }
+
+  .arrow {
+    display: block;
+    width: 10px;
+    height: 5px;
+    overflow: clip;
+
+    &[data-side='top'] {
+      bottom: -5px;
+      rotate: 180deg;
+    }
+    &[data-side='bottom'] {
+      top: -5px;
+    }
+    &[data-side='left'],
+    &[data-side='inline-start'] {
+      right: -7.5px;
+      rotate: 90deg;
+    }
+    &[data-side='right'],
+    &[data-side='inline-end'] {
+      left: -7.5px;
+      rotate: -90deg;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: calc(5px * sqrt(2));
+      height: calc(5px * sqrt(2));
+      background: var(--tooltip-bg);
+      transform: translate(-50%, 50%) rotate(45deg);
+    }
+  }
+}

@@ -28,6 +28,7 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | `Card`    | Compound API: `Card.Header`, `Card.Title`, `Card.Description`, `Card.Body`, `Card.Footer`               |
 | `Dialog`  | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                        |
 | `Tabs`    | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator |
+| `Tooltip` | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                      |
 | `Toast`   | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                         |
 
 ## Usage

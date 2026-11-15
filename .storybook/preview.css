@@ -1,0 +1,12 @@
+/* Canvas follows the theme tokens so dark mode previews look like a real app. */
+body {
+  margin: 0;
+  background: var(--thira-bg);
+  color: var(--thira-text);
+  font-family: var(--thira-font);
+}
+
+/* Docs pages: keep story previews on the themed background too. */
+.docs-story {
+  background: var(--thira-bg) !important;
+}

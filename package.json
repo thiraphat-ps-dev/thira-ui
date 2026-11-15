@@ -47,6 +47,8 @@
     "react-dom": ">=19"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.7",
+    "@storybook/addon-docs": "^10.6.7",
     "@storybook/react-vite": "^10.6.7",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",

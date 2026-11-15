@@ -82,7 +82,7 @@
 
   .danger {
     background: var(--thira-danger);
-    color: #fff;
+    color: var(--thira-on-danger);
     &:hover {
       background: var(--thira-danger-hover);
     }

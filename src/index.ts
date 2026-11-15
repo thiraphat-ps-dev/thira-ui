@@ -5,6 +5,20 @@ export { Card, type CardProps, type CardTitleProps } from './components/Card/Car
 export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
+export {
+  Menu,
+  type MenuCheckboxItemProps,
+  type MenuContentProps,
+  type MenuGroupLabelProps,
+  type MenuGroupProps,
+  type MenuItemProps,
+  type MenuItemTone,
+  type MenuProps,
+  type MenuRadioGroupProps,
+  type MenuRadioItemProps,
+  type MenuSeparatorProps,
+  type MenuTriggerProps,
+} from './components/Menu/Menu';
 export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
 export {
   Tabs,

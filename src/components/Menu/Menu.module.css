@@ -1,0 +1,113 @@
+@layer thira {
+  .positioner {
+    z-index: 55; /* above dialogs (50–51), below tooltips (60) */
+    outline: none;
+  }
+
+  .popup {
+    box-sizing: border-box;
+    min-width: max(10rem, var(--anchor-width));
+    max-height: var(--available-height);
+    overflow-y: auto;
+    padding: var(--thira-space-1);
+    border: 1px solid var(--thira-border);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+    color: var(--thira-text);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    box-shadow: var(--thira-shadow-md);
+    outline: none;
+    transform-origin: var(--transform-origin);
+    transition:
+      opacity var(--thira-duration) var(--thira-ease),
+      scale var(--thira-duration) var(--thira-ease);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+      scale: 0.96;
+    }
+
+    /* Closing because an item was picked or Esc was pressed: no fade-out. */
+    &[data-instant] {
+      transition: none;
+    }
+  }
+
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--thira-space-4);
+    min-height: 2rem;
+    padding: var(--thira-space-1) var(--thira-space-2);
+    border-radius: var(--thira-radius-sm);
+    line-height: 1.4;
+    cursor: default;
+    user-select: none;
+    outline: none;
+
+    &[data-highlighted] {
+      background: var(--thira-surface-muted);
+    }
+
+    &[data-disabled] {
+      color: var(--thira-text-muted);
+      cursor: not-allowed;
+    }
+  }
+
+  /* Solid fill when highlighted: a 12% tint drops dark-theme text below 4.5:1. */
+  .danger {
+    color: var(--thira-danger);
+
+    &[data-highlighted] {
+      background: var(--thira-danger);
+      color: var(--thira-on-danger);
+    }
+
+    &[data-disabled] {
+      color: var(--thira-text-muted);
+    }
+  }
+
+  .shortcut {
+    margin-inline-start: auto;
+    color: var(--thira-text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+
+    .danger & {
+      color: inherit;
+    }
+  }
+
+  /* Checkbox / radio items reserve a column for the indicator. */
+  .indented {
+    padding-inline-start: calc(var(--thira-space-2) + 1rem + var(--thira-space-2));
+  }
+
+  .indicator {
+    position: absolute;
+    inset-inline-start: var(--thira-space-2);
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .groupLabel {
+    padding: var(--thira-space-2) var(--thira-space-2) var(--thira-space-1);
+    color: var(--thira-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  .separator {
+    height: 1px;
+    margin: var(--thira-space-1) calc(-1 * var(--thira-space-1));
+    background: var(--thira-border);
+  }
+}

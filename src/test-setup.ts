@@ -10,7 +10,9 @@ expect.extend({
     const { violations } = await axe.run(received, {
       // jsdom has no layout or rendering, so axe can't compute color contrast here.
       // Contrast is checked in Storybook's Accessibility panel (real browser, both themes).
-      rules: { 'color-contrast': { enabled: false } },
+      // `region` is off for the same reason Storybook's a11y addon turns it off: components are
+      // tested without page landmarks, and portaled popups (e.g. role="menu") sit outside them.
+      rules: { 'color-contrast': { enabled: false }, region: { enabled: false } },
     });
     return {
       pass: violations.length === 0,

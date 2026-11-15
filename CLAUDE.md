@@ -1,6 +1,6 @@
 # thira-ui — guide for Claude
 
-Accessible React component library: **Base UI primitives + modern CSS (CSS Modules, CSS variables, `@layer`)**, no CSS-in-JS. Public, MIT, early (v0.1), not on npm yet.
+Accessible React component library: **Base UI primitives + modern CSS (CSS Modules, CSS variables, `@layer`)**, no CSS-in-JS. Public, MIT, early (v0.x), published to npm as `thira-ui`.
 
 - Repo: https://github.com/thiraphat-ps-dev/thira-ui (public)
 - Live Storybook: https://thiraphat-ps-dev.github.io/thira-ui/ (auto-deployed by CI on push to `main`)
@@ -25,6 +25,15 @@ Accessible React component library: **Base UI primitives + modern CSS (CSS Modul
 | `npm run lint:fix` / `npm run format` | Auto-fix lint / Prettier                                                    |
 
 CI (`.github/workflows/ci.yml`, Node 24) runs typecheck → lint → format → test → build → build-storybook, then deploys Storybook to GitHub Pages on `main`.
+
+## Releasing
+
+1. For every user-facing change, add a changeset: `npx changeset` (pick patch/minor; it writes `.changeset/*.md`).
+2. To release: `npx changeset version` (bumps `package.json`, writes `CHANGELOG.md`), commit, then tag `vX.Y.Z` and push the tag.
+3. `.github/workflows/release.yml` publishes from CI via npm trusted publishing (OIDC, provenance; no token). It fails if the tag ≠ `package.json` version.
+4. `prepublishOnly` runs `npm run check && npm run build`, so a broken package can't be published.
+
+**Ask the maintainer before running steps 2–3** (version bumps and publishing are on the "ask first" list).
 
 ## Layout
 
@@ -83,5 +92,5 @@ docs/banner.jpg            README banner
 ## Known gaps / ideas
 
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
-- Not yet: Changesets/release flow, npm publish, more components (Select, Popover, Menu, Radio, Textarea).
+- Not yet: more components (Select, Popover, Menu, Radio, Textarea).
 - `Card.Title` is always an `<h3>` — consider a way to change the heading level.

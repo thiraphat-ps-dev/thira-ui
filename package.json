@@ -4,9 +4,13 @@
   "description": "A minimal, accessible React component library built on Base UI primitives and modern CSS.",
   "license": "MIT",
   "author": "Thiraphat Phutson",
+  "homepage": "https://thiraphat-ps-dev.github.io/thira-ui/",
   "repository": {
     "type": "git",
     "url": "https://github.com/thiraphat-ps-dev/thira-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiraphat-ps-dev/thira-ui/issues"
   },
   "keywords": [
     "react",
@@ -34,6 +38,9 @@
     },
     "./styles.css": "./dist/thira-ui.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "vite build && tsc -p tsconfig.build.json",
@@ -45,13 +52,20 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "prepublishOnly": "npm run check && npm run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
   },
   "peerDependencies": {
     "react": ">=19",
     "react-dom": ">=19"
   },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0"
+  },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^9.39.5",
     "@storybook/addon-a11y": "^10.6.7",
     "@storybook/addon-docs": "^10.6.7",
@@ -79,8 +93,5 @@
     "typescript-eslint": "^8.72.2",
     "vite": "^8.3.8",
     "vitest": "^5.1.0"
-  },
-  "dependencies": {
-    "@base-ui/react": "^1.9.0"
   }
 }

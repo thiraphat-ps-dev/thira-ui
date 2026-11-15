@@ -2,6 +2,7 @@
 
 ![thira-ui — an accessible React UI library built on Base UI and modern CSS](./docs/banner.jpg)
 
+[![npm](https://img.shields.io/npm/v/thira-ui?color=cb3837&logo=npm)](https://www.npmjs.com/package/thira-ui)
 [![CI](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Storybook](https://img.shields.io/badge/Storybook-live_demo-FF4785?logo=storybook&logoColor=white)](https://thiraphat-ps-dev.github.io/thira-ui/)
@@ -16,7 +17,7 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 - **Easy to override.** All styles live in `@layer thira`, so your own CSS always wins without `!important`.
 - **Themeable with one variable.** Change `--thira-hue` and every accent, hover and focus color follows.
 
-> **Status:** early (v0.1). APIs may change before 1.0. Not published to npm yet.
+> **Status:** early (v0.x). APIs may change before 1.0.
 
 ## Components
 
@@ -33,9 +34,15 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | `Toast`    | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                              |
 | ---------- | ------------------------------------------------------------------------------------------------------------ |
 
-## Usage
+## Install
+
+```bash
+npm install thira-ui
+```
 
 Requires React 19+.
+
+## Usage
 
 ```tsx
 import { Button, Dialog, ToastProvider, useToast } from 'thira-ui';

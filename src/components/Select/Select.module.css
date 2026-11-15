@@ -1,0 +1,205 @@
+@layer thira {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-2);
+    font-family: var(--thira-font);
+  }
+
+  .label {
+    font-size: var(--thira-text-sm);
+    font-weight: 500;
+    color: var(--thira-text);
+    cursor: default;
+  }
+
+  .required {
+    margin-inline-start: 2px;
+    color: var(--thira-danger);
+  }
+
+  .trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--thira-space-2);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding-inline: var(--thira-space-3) var(--thira-space-2);
+    border: 1px solid var(--thira-border-strong);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+    color: var(--thira-text);
+    font: inherit;
+    font-size: var(--thira-text-sm);
+    text-align: start;
+    white-space: nowrap;
+    cursor: default;
+    user-select: none;
+    transition:
+      border-color var(--thira-duration) var(--thira-ease),
+      box-shadow var(--thira-duration) var(--thira-ease);
+
+    &:hover:not([data-disabled]) {
+      border-color: var(--thira-text-muted);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--thira-accent);
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[aria-invalid='true'] {
+      border-color: var(--thira-danger);
+    }
+
+    &[aria-invalid='true']:focus-visible {
+      box-shadow: 0 0 0 3px var(--thira-danger-soft);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+      background: var(--thira-surface-muted);
+    }
+  }
+
+  .sm {
+    height: 2rem;
+  }
+  .md {
+    height: 2.5rem;
+  }
+  .lg {
+    height: 3rem;
+    font-size: var(--thira-text-md);
+  }
+
+  .value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &[data-placeholder] {
+      color: var(--thira-text-muted);
+    }
+  }
+
+  .icon {
+    display: flex;
+    flex-shrink: 0;
+    color: var(--thira-text-muted);
+    transition: rotate var(--thira-duration) var(--thira-ease);
+
+    &[data-popup-open] {
+      rotate: 180deg;
+    }
+  }
+
+  .positioner {
+    z-index: 60;
+    outline: none;
+  }
+
+  .popup {
+    box-sizing: border-box;
+    min-width: var(--anchor-width);
+    padding: var(--thira-space-1);
+    border: 1px solid var(--thira-border);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+    color: var(--thira-text);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    box-shadow: var(--thira-shadow-md);
+    outline: none;
+    transform-origin: var(--transform-origin);
+    transition:
+      opacity var(--thira-duration) var(--thira-ease),
+      scale var(--thira-duration) var(--thira-ease);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+      scale: 0.96;
+    }
+
+    /* alignItemWithTrigger mode: the popup sits over the trigger, so don't scale it in. */
+    &[data-side='none'] {
+      min-width: calc(var(--anchor-width) + var(--thira-space-6));
+
+      &[data-starting-style],
+      &[data-ending-style] {
+        scale: 1;
+      }
+    }
+  }
+
+  .list {
+    box-sizing: border-box;
+    max-height: min(20rem, var(--available-height));
+    overflow-y: auto;
+    scroll-padding-block: var(--thira-space-1);
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    align-items: center;
+    gap: var(--thira-space-2);
+    padding: var(--thira-space-2) var(--thira-space-3) var(--thira-space-2) var(--thira-space-2);
+    border-radius: var(--thira-radius-sm);
+    outline: none;
+    line-height: 1.25;
+    cursor: default;
+    user-select: none;
+
+    &[data-highlighted] {
+      background: var(--thira-surface-muted);
+    }
+
+    &[data-selected] {
+      font-weight: 500;
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  .indicator {
+    grid-column-start: 1;
+    display: flex;
+    color: var(--thira-accent);
+  }
+
+  .itemText {
+    grid-column-start: 2;
+  }
+
+  .group + .group {
+    margin-top: var(--thira-space-1);
+    padding-top: var(--thira-space-1);
+    border-top: 1px solid var(--thira-border);
+  }
+
+  .groupLabel {
+    padding: var(--thira-space-2) var(--thira-space-3) var(--thira-space-1) calc(var(--thira-space-2) * 2 + 1rem);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--thira-text-muted);
+    user-select: none;
+  }
+
+  .message {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .error {
+    color: var(--thira-danger);
+  }
+}

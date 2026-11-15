@@ -2,8 +2,11 @@
 
 [![CI](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/thiraphat-ps-dev/thira-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Storybook](https://img.shields.io/badge/Storybook-live_demo-FF4785?logo=storybook&logoColor=white)](https://thiraphat-ps-dev.github.io/thira-ui/)
 
 A minimal, accessible React component library built on [Base UI](https://base-ui.com) primitives and modern CSS.
+
+**[▶ Live demo (Storybook)](https://thiraphat-ps-dev.github.io/thira-ui/)**
 
 - **Accessible by default.** Focus management, keyboard support and ARIA come from Base UI; every story is checked with axe in light and dark mode.
 - **Modern CSS, zero runtime.** CSS Modules, CSS variables, nesting and `oklch()` relative colors — no CSS-in-JS.

@@ -1,0 +1,114 @@
+@layer thira {
+  .field {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--thira-space-2);
+    font-family: var(--thira-font);
+    font-size: var(--thira-text-sm);
+    line-height: 1.25rem;
+  }
+
+  .box {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1.125rem;
+    height: 1.125rem;
+    /* Center the box on the label's first line. */
+    margin-block-start: calc((1.25rem - 1.125rem) / 2);
+    padding: 0;
+    /* --thira-text-muted, not --thira-border-strong: the box edge needs 3:1 non-text contrast. */
+    border: 1.5px solid var(--thira-text-muted);
+    border-radius: var(--thira-radius-sm);
+    background: var(--thira-surface);
+    color: var(--thira-on-accent);
+    cursor: pointer;
+    transition:
+      background-color var(--thira-duration) var(--thira-ease),
+      border-color var(--thira-duration) var(--thira-ease),
+      box-shadow var(--thira-duration) var(--thira-ease);
+
+    &:hover:not([data-disabled]) {
+      border-color: var(--thira-text);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[data-checked],
+    &[data-indeterminate] {
+      border-color: var(--thira-accent);
+      background: var(--thira-accent);
+    }
+
+    &[data-checked]:hover:not([data-disabled]),
+    &[data-indeterminate]:hover:not([data-disabled]) {
+      border-color: var(--thira-accent-hover);
+      background: var(--thira-accent-hover);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  .indicator {
+    display: flex;
+
+    & svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &[data-indeterminate] .check,
+    &:not([data-indeterminate]) .dash {
+      display: none;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .label {
+    font-weight: 500;
+    color: var(--thira-text);
+    cursor: pointer;
+  }
+
+  .description {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .field:has(.box[data-disabled]) .label {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-3);
+    font-family: var(--thira-font);
+  }
+
+  .groupLabel {
+    font-size: var(--thira-text-sm);
+    font-weight: 600;
+    color: var(--thira-text);
+  }
+}

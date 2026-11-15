@@ -2,6 +2,7 @@ import './styles/tokens.css';
 
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button/Button';
 export { Card, type CardProps } from './components/Card/Card';
+export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
 export {

@@ -1,5 +1,11 @@
 # thira-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- f8fcbf5: The default font stack (`--thira-font`) now starts with Thira Sans, a Thai + Latin variable font. It is not bundled: install and import `thira-sans` to use it, otherwise text falls back to the system UI font as before. Storybook now shows components in Thira Sans.
+
 ## 0.3.0
 
 ### Minor Changes

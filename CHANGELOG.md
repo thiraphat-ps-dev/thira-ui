@@ -1,5 +1,11 @@
 # thira-ui
 
+## 0.6.0
+
+### Minor Changes
+
+- 3f7e8e9: Add `ToggleGroup` (segmented control or multi-toggle), `Progress` (labelled progress bar with an indeterminate state), `Kbd` (keyboard key) and `Stat` (labelled number for dashboards).
+
 ## 0.5.0
 
 ### Minor Changes

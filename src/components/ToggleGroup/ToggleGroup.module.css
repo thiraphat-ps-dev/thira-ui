@@ -1,0 +1,88 @@
+@layer thira {
+  .group {
+    --thira-toggle-h: 2.25rem;
+    --thira-toggle-px: var(--thira-space-3);
+
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--thira-border);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface-muted);
+    font-family: var(--thira-font);
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+    }
+  }
+
+  .sm {
+    --thira-toggle-h: 1.75rem;
+    --thira-toggle-px: var(--thira-space-2);
+  }
+
+  .fullWidth {
+    display: flex;
+    width: 100%;
+
+    & .item {
+      flex: 1;
+    }
+  }
+
+  .item {
+    all: unset;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--thira-space-2);
+    min-height: var(--thira-toggle-h);
+    padding-inline: var(--thira-toggle-px);
+    /* inner radius = outer radius minus the group's padding, so the corners stay concentric */
+    border-radius: calc(var(--thira-radius-md) - 3px);
+    color: var(--thira-text-muted);
+    font-size: var(--thira-text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--thira-duration) var(--thira-ease),
+      color var(--thira-duration) var(--thira-ease),
+      box-shadow var(--thira-duration) var(--thira-ease);
+
+    &:hover:not([data-disabled]):not([data-pressed]) {
+      color: var(--thira-text);
+      background: oklch(from var(--thira-surface) l c h / 0.6);
+    }
+
+    &[data-pressed] {
+      color: var(--thira-text);
+      background: var(--thira-surface);
+      box-shadow:
+        var(--thira-shadow-sm),
+        0 0 0 1px var(--thira-border);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    & svg {
+      flex-shrink: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .item {
+      transition: none;
+    }
+  }
+}

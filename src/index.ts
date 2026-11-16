@@ -6,6 +6,7 @@ export { Card, type CardProps, type CardTitleProps } from './components/Card/Car
 export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export { Input, type InputProps } from './components/Input/Input';
+export { Kbd, type KbdProps, type KbdSize } from './components/Kbd/Kbd';
 export {
   Menu,
   type MenuCheckboxItemProps,
@@ -27,6 +28,7 @@ export {
   type PopoverProps,
   type PopoverTriggerProps,
 } from './components/Popover/Popover';
+export { Progress, type ProgressProps, type ProgressSize, type ProgressTone } from './components/Progress/Progress';
 export { Radio, RadioGroup, type RadioGroupProps, type RadioProps } from './components/Radio/Radio';
 export {
   Select,
@@ -38,6 +40,7 @@ export {
 } from './components/Select/Select';
 export { Skeleton, type SkeletonProps, type SkeletonVariant } from './components/Skeleton/Skeleton';
 export { Spinner, type SpinnerProps, type SpinnerSize } from './components/Spinner/Spinner';
+export { Stat, type StatLayout, type StatProps, type StatVariant } from './components/Stat/Stat';
 export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
 export {
   Tabs,
@@ -54,6 +57,12 @@ export {
   type ToastProviderProps,
   type ToastTone,
 } from './components/Toast/Toast';
+export {
+  ToggleGroup,
+  type ToggleGroupItemProps,
+  type ToggleGroupProps,
+  type ToggleGroupSize,
+} from './components/ToggleGroup/ToggleGroup';
 export {
   Tooltip,
   TooltipProvider,

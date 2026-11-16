@@ -21,25 +21,29 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 
 ## Components
 
-| Component    | Notes                                                                                                                     |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `Button`     | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links                           |
-| `Input`      | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                                   |
-| `Textarea`   | Multi-line field with label, hint/error, CSS-only auto-resize (`field-sizing: content`) and an optional character counter |
-| `Checkbox`   | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox              |
-| `RadioGroup` | Labelled single-choice group (`Radio` items with descriptions), hint/error, arrow-key selection, vertical/horizontal      |
-| `Switch`     | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware                        |
-| `Card`       | Compound API: `Card.Header`, `Card.Title` (`render` for heading level), `Card.Description`, `Card.Body`, `Card.Footer`    |
-| `Dialog`     | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                                          |
-| `Popover`    | Floating panel anchored to a trigger, optional title/description, arrow and `Popover.Close`                               |
-| `Tabs`       | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator                   |
-| `Menu`       | Dropdown action menu: `danger` tone, shortcut hints, groups, separators, checkbox/radio items                             |
-| `Select`     | Single-select dropdown with label, hint/error, groups and an optional `items` prop                                        |
-| `Tooltip`    | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                                        |
-| `Toast`      | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                                           |
-| `Badge`      | Status label: `neutral` · `accent` · `success` · `warning` · `danger` tones, `soft` · `solid` · `outline`, optional dot   |
-| `Spinner`    | Loading indicator with `role="status"` and a hidden label, or decorative with `label={null}`; pulses under reduced motion |
-| `Skeleton`   | `text` · `rect` · `circle` placeholders and `lines`, CSS shimmer; always `aria-hidden` (put `aria-busy` on the region)    |
+| Component     | Notes                                                                                                                     |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `Button`      | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links                           |
+| `Input`       | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                                   |
+| `Textarea`    | Multi-line field with label, hint/error, CSS-only auto-resize (`field-sizing: content`) and an optional character counter |
+| `Checkbox`    | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox              |
+| `RadioGroup`  | Labelled single-choice group (`Radio` items with descriptions), hint/error, arrow-key selection, vertical/horizontal      |
+| `Switch`      | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware                        |
+| `Card`        | Compound API: `Card.Header`, `Card.Title` (`render` for heading level), `Card.Description`, `Card.Body`, `Card.Footer`    |
+| `Dialog`      | Modal with focus trap, Esc to close, scroll lock, nested dialogs                                                          |
+| `Popover`     | Floating panel anchored to a trigger, optional title/description, arrow and `Popover.Close`                               |
+| `ToggleGroup` | Segmented control (one pressed) or independent toggles with `multiple`; arrow keys, `sm`/`md`, `fullWidth`                |
+| `Tabs`        | `Tabs.List` / `Tabs.Tab` / `Tabs.Panel`; arrow-key navigation, vertical orientation, animated indicator                   |
+| `Menu`        | Dropdown action menu: `danger` tone, shortcut hints, groups, separators, checkbox/radio items                             |
+| `Select`      | Single-select dropdown with label, hint/error, groups and an optional `items` prop                                        |
+| `Tooltip`     | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                                        |
+| `Toast`       | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                                           |
+| `Badge`       | Status label: `neutral` · `accent` · `success` · `warning` · `danger` tones, `soft` · `solid` · `outline`, optional dot   |
+| `Progress`    | Labelled progress bar with optional value text, indeterminate state (`value={null}`), tones, reduced-motion aware         |
+| `Spinner`     | Loading indicator with `role="status"` and a hidden label, or decorative with `label={null}`; pulses under reduced motion |
+| `Skeleton`    | `text` · `rect` · `circle` placeholders and `lines`, CSS shimmer; always `aria-hidden` (put `aria-busy` on the region)    |
+| `Kbd`         | A keyboard key as a native `<kbd>`, for shortcuts and hints                                                               |
+| `Stat`        | Labelled number for dashboards: value, unit and hint; `stacked`/`inline`, `outline`/`plain`                               |
 
 ## Install
 

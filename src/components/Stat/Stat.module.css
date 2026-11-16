@@ -1,0 +1,58 @@
+@layer thira {
+  .stat {
+    display: grid;
+    align-content: start;
+    gap: var(--thira-space-1);
+    min-width: 0;
+    font-family: var(--thira-font);
+    color: var(--thira-text);
+  }
+
+  .outline {
+    padding: var(--thira-space-3) var(--thira-space-4);
+    border: 1px solid var(--thira-border);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+  }
+
+  .label {
+    font-size: var(--thira-text-sm);
+    color: var(--thira-text-muted);
+  }
+
+  .value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+
+  .unit {
+    margin-inline-start: 0.15em;
+    font-size: 0.55em;
+    font-weight: 500;
+    color: var(--thira-text-muted);
+  }
+
+  .hint {
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .inline {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    column-gap: var(--thira-space-3);
+
+    & .value {
+      font-size: 1.25rem;
+      text-align: end;
+    }
+
+    & .hint {
+      grid-column: 1 / -1;
+    }
+  }
+}

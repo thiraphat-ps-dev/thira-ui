@@ -57,7 +57,11 @@
     --thira-space-6: 1.5rem;
 
     /* Type */
-    --thira-font: 'Thira Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+    /* 'Thira Sans Fallback' is registered by the thira-sans package (≥0.4): Arial/Tahoma resized to
+       Thira Sans' metrics so the font swap doesn't shift layout. Without that package it is skipped. */
+    --thira-font:
+      'Thira Sans', 'Thira Sans Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Noto Sans Thai',
+      sans-serif;
     --thira-text-sm: 0.875rem;
     --thira-text-md: 1rem;
     --thira-text-lg: 1.125rem;

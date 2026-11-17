@@ -69,7 +69,7 @@ npm install thira-sans
 import 'thira-sans'; // variable font, weights 100–700
 ```
 
-Without it, components fall back to the system UI font (with Noto Sans Thai for Thai text).
+thira-sans 0.4+ also registers `Thira Sans Fallback` (Arial/Tahoma resized to Thira Sans' metrics), which comes next in the stack, so text doesn't jump when the font finishes loading. Without it, components fall back to the system UI font (with Noto Sans Thai for Thai text).
 
 ## Usage
 

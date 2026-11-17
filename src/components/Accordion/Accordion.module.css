@@ -1,0 +1,111 @@
+@layer thira {
+  .root {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    color: var(--thira-text);
+    font-family: var(--thira-font);
+  }
+
+  .outline {
+    overflow: hidden;
+    border: 1px solid var(--thira-border);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+  }
+
+  .item + .item {
+    border-top: 1px solid var(--thira-border);
+  }
+
+  .plain .item {
+    border-bottom: 1px solid var(--thira-border);
+  }
+
+  .header {
+    margin: 0;
+    font: inherit;
+  }
+
+  .trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--thira-space-4);
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--thira-space-4);
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    text-align: start;
+    cursor: pointer;
+
+    .plain & {
+      padding-inline: 0;
+    }
+
+    @media (hover: hover) {
+      &:hover:not([data-disabled]) {
+        background: var(--thira-surface-muted);
+      }
+      .plain &:hover:not([data-disabled]) {
+        background: transparent;
+        color: var(--thira-accent);
+      }
+    }
+
+    &:focus-visible {
+      position: relative;
+      outline: none;
+      box-shadow: inset var(--thira-focus-ring);
+    }
+
+    &[data-disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .chevron {
+    flex-shrink: 0;
+    color: var(--thira-text-muted);
+    transition: rotate var(--thira-duration) var(--thira-ease);
+
+    [data-panel-open] > & {
+      rotate: 180deg;
+    }
+  }
+
+  .panel {
+    height: var(--accordion-panel-height);
+    overflow: hidden;
+    transition: height calc(var(--thira-duration) * 1.4) var(--thira-ease);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      height: 0;
+    }
+  }
+
+  .content {
+    padding: 0 var(--thira-space-4) var(--thira-space-4);
+    color: var(--thira-text-muted);
+    font-size: var(--thira-text-sm);
+    line-height: 1.6;
+
+    .plain & {
+      padding-inline: 0;
+    }
+
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,5 +1,20 @@
 import './styles/tokens.css';
 
+export {
+  Accordion,
+  type AccordionItemProps,
+  type AccordionProps,
+  type AccordionVariant,
+} from './components/Accordion/Accordion';
+export { AlertDialog, type AlertDialogContentProps } from './components/AlertDialog/AlertDialog';
+export {
+  Avatar,
+  getInitials,
+  type AvatarGroupProps,
+  type AvatarProps,
+  type AvatarShape,
+  type AvatarSize,
+} from './components/Avatar/Avatar';
 export { Badge, type BadgeProps, type BadgeSize, type BadgeTone, type BadgeVariant } from './components/Badge/Badge';
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button/Button';
 export { Card, type CardProps, type CardTitleProps } from './components/Card/Card';
@@ -38,6 +53,7 @@ export {
   type SelectItemProps,
   type SelectProps,
 } from './components/Select/Select';
+export { Separator, type SeparatorProps } from './components/Separator/Separator';
 export { Skeleton, type SkeletonProps, type SkeletonVariant } from './components/Skeleton/Skeleton';
 export { Spinner, type SpinnerProps, type SpinnerSize } from './components/Spinner/Spinner';
 export { Stat, type StatLayout, type StatProps, type StatVariant } from './components/Stat/Stat';

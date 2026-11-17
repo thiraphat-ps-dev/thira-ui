@@ -98,5 +98,6 @@ docs/banner.jpg            README banner
 
 ## Known gaps / ideas
 
+- Dependabot alert #2 (`minimatch` DoS, moderate) is dev-only — pulled in by ESLint 9 / jsx-a11y (`minimatch@3`) and Storybook — and not in the published package. Deliberately left open: an `overrides` bump to 11 could break ESLint 9. Resolve it when moving to ESLint 10.
 - Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
 - Not yet: Combobox, DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.

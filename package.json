@@ -1,6 +1,6 @@
 {
   "name": "thira-ui",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A minimal, accessible React component library built on Base UI primitives and modern CSS.",
   "license": "MIT",
   "author": "Thiraphat Phutson",

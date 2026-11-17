@@ -1,5 +1,11 @@
 # thira-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- 47ab09a: Add Accordion, AlertDialog, Avatar (with `Avatar.Group` and `getInitials`) and Separator.
+
 ## 0.6.0
 
 ### Minor Changes

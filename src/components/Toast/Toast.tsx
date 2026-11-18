@@ -1,5 +1,7 @@
 import { Toast } from '@base-ui/react/toast';
 import { useMemo, type ReactNode } from 'react';
+import { XIcon } from 'thira-icons/react/x';
+import { ICON_STROKE } from '../../utils/icon';
 import styles from './Toast.module.css';
 
 export type ToastTone = 'neutral' | 'success' | 'danger';
@@ -49,9 +51,7 @@ function ToastList() {
         </div>
         <Toast.Action className={styles.action} />
         <Toast.Close className={styles.close} aria-label="Dismiss">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <XIcon size={14} strokeWidth={ICON_STROKE} />
         </Toast.Close>
       </Toast.Content>
     </Toast.Root>

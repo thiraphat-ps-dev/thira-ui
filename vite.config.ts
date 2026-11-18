@@ -18,7 +18,7 @@ export default defineConfig({
       cssFileName: 'thira-ui',
     },
     rollupOptions: {
-      external: [/^react($|\/)/, /^react-dom($|\/)/, /^@base-ui\//],
+      external: [/^react($|\/)/, /^react-dom($|\/)/, /^@base-ui\//, /^thira-icons($|\/)/],
     },
     sourcemap: true,
   },

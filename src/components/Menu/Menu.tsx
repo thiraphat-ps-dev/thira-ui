@@ -1,6 +1,8 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu';
 import type { ComponentProps, ReactNode } from 'react';
+import { CheckIcon } from 'thira-icons/react/check';
 import { cx } from '../../utils/cx';
+import { ICON_STROKE } from '../../utils/icon';
 import styles from './Menu.module.css';
 
 export type MenuProps = ComponentProps<typeof BaseMenu.Root>;
@@ -78,15 +80,7 @@ function MenuCheckboxItem({ className, children, ...props }: MenuCheckboxItemPro
   return (
     <BaseMenu.CheckboxItem className={cx(styles.item, styles.indented, className)} {...props}>
       <BaseMenu.CheckboxItemIndicator className={styles.indicator}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M3.5 8.5l3 3 6-7"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <CheckIcon size={16} strokeWidth={ICON_STROKE} />
       </BaseMenu.CheckboxItemIndicator>
       {children}
     </BaseMenu.CheckboxItem>

@@ -1,6 +1,8 @@
 import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group';
 import { useId, type ComponentProps, type ReactNode } from 'react';
+import { CheckIcon } from 'thira-icons/react/check';
+import { MinusIcon } from 'thira-icons/react/minus';
 import { cx } from '../../utils/cx';
 import styles from './Checkbox.module.css';
 
@@ -32,12 +34,8 @@ export function Checkbox({ label, description, id, className, ...props }: Checkb
         {...props}
       >
         <BaseCheckbox.Indicator className={styles.indicator}>
-          <svg className={styles.check} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="m3.5 8.5 3 3 6-7" />
-          </svg>
-          <svg className={styles.dash} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M4 8h8" />
-          </svg>
+          <CheckIcon className={styles.check} />
+          <MinusIcon className={styles.dash} />
         </BaseCheckbox.Indicator>
       </BaseCheckbox.Root>
       {(label ?? description) && (

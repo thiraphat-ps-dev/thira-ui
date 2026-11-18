@@ -62,7 +62,8 @@
     "react-dom": ">=19"
   },
   "dependencies": {
-    "@base-ui/react": "^1.9.0"
+    "@base-ui/react": "^1.9.0",
+    "thira-icons": "file:../thira-icons/thira-icons-0.1.0.tgz"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",

@@ -1,6 +1,8 @@
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import { createElement, type ComponentProps, type ReactNode } from 'react';
+import { ChevronDownIcon } from 'thira-icons/react/chevron-down';
 import { cx } from '../../utils/cx';
+import { ICON_STROKE } from '../../utils/icon';
 import styles from './Accordion.module.css';
 
 export type AccordionVariant = 'outline' | 'plain';
@@ -29,15 +31,7 @@ function AccordionItem({ title, headingLevel = 3, className, children, ...props 
       <BaseAccordion.Header className={styles.header} render={createElement(`h${String(headingLevel)}`)}>
         <BaseAccordion.Trigger className={styles.trigger}>
           <span className={styles.title}>{title}</span>
-          <svg className={styles.chevron} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path
-              d="M4 6l4 4 4-4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ChevronDownIcon className={styles.chevron} size={16} strokeWidth={ICON_STROKE} />
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
       <BaseAccordion.Panel className={styles.panel}>

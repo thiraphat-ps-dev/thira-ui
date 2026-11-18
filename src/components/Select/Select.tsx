@@ -1,6 +1,9 @@
 import { Select as BaseSelect } from '@base-ui/react/select';
 import { Children, isValidElement, useId, type ComponentProps, type ReactNode } from 'react';
+import { CheckIcon } from 'thira-icons/react/check';
+import { ChevronDownIcon } from 'thira-icons/react/chevron-down';
 import { cx } from '../../utils/cx';
+import { ICON_STROKE } from '../../utils/icon';
 import styles from './Select.module.css';
 
 export interface SelectItemData<Value = string> {
@@ -38,28 +41,6 @@ export interface SelectProps<Value = string> extends Omit<
   className?: string;
 }
 
-function ChevronIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path
-        d="M3 8.5l3.5 3.5L13 4.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export interface SelectItemProps extends Omit<ComponentProps<typeof BaseSelect.Item>, 'className'> {
   className?: string;
 }
@@ -68,7 +49,7 @@ function SelectItem({ className, children, ...props }: SelectItemProps) {
   return (
     <BaseSelect.Item className={cx(styles.item, className)} {...props}>
       <BaseSelect.ItemIndicator className={styles.indicator}>
-        <CheckIcon />
+        <CheckIcon size={16} strokeWidth={ICON_STROKE} />
       </BaseSelect.ItemIndicator>
       <BaseSelect.ItemText className={styles.itemText}>{children}</BaseSelect.ItemText>
     </BaseSelect.Item>
@@ -147,7 +128,7 @@ function SelectRoot<Value = string>({
         >
           <BaseSelect.Value className={styles.value} placeholder={placeholder} />
           <BaseSelect.Icon className={styles.icon}>
-            <ChevronIcon />
+            <ChevronDownIcon size={16} strokeWidth={ICON_STROKE} />
           </BaseSelect.Icon>
         </BaseSelect.Trigger>
         <BaseSelect.Portal>

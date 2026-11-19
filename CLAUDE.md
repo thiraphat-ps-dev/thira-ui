@@ -20,11 +20,12 @@ Accessible React component library: **Base UI primitives + modern CSS (CSS Modul
 | `npm run dev`                         | Storybook on http://localhost:6006                                          |
 | `npm run check`                       | typecheck + lint + format check + tests — **must pass before every commit** |
 | `npm test` / `npm run test:watch`     | Vitest (jsdom + Testing Library)                                            |
+| `npm run test:a11y`                   | Every story in headless Chromium, light + dark; axe incl. color contrast    |
 | `npm run build`                       | Library build to `dist/` (Vite lib mode + `tsc` for `.d.ts`)                |
 | `npm run build-storybook`             | Static Storybook to `storybook-static/`                                     |
 | `npm run lint:fix` / `npm run format` | Auto-fix lint / Prettier                                                    |
 
-CI (`.github/workflows/ci.yml`, Node 24) runs typecheck → lint → format → test → build → build-storybook, then deploys Storybook to GitHub Pages on `main`.
+CI (`.github/workflows/ci.yml`, Node 24) runs typecheck → lint → format → test → test:a11y → build → build-storybook, then deploys Storybook to GitHub Pages on `main`.
 
 ## Releasing
 
@@ -74,8 +75,8 @@ docs/banner.jpg            README banner
 - [ ] Export it (and its prop types) from `src/index.ts`.
 - [ ] Tests query by role/label (`getByRole`, `getByLabelText`), not by class or test id.
 - [ ] Stories cover variants/states; check light **and** dark with the theme toolbar.
-- [ ] Accessibility: no axe violations in either theme (Storybook "Accessibility" tab). Text on colored backgrounds must reach **4.5:1** — use an `--thira-on-*` token if needed.
-- [ ] Overlays/transient UI (dialogs, toasts, popups): add a story `play` that opens it (Storybook's axe runs after `play`), and a test with `await expect(document.body).toHaveNoAxeViolations()` (matcher in `src/test-setup.ts`; `color-contrast` is off there because jsdom can't compute it).
+- [ ] Accessibility: no axe violations in either theme — `npm run test:a11y` checks every story (also the Storybook "Accessibility" tab). Text on colored backgrounds must reach **4.5:1** — use an `--thira-on-*` token if needed.
+- [ ] Overlays/transient UI (dialogs, toasts, popups): add a story `play` that opens it and ends with `await waitForOpen(popup)` from `.storybook/wait-for-open.ts` (Storybook's axe runs after `play`; without the wait, contrast is measured mid-fade or `toBeVisible` races `data-starting-style`), and a test with `await expect(document.body).toHaveNoAxeViolations()` (matcher in `src/test-setup.ts`; `color-contrast` is off there because jsdom can't compute it).
 - [ ] **Sample content in stories/tests/docs must be generic** (e.g. "Alex Morgan", example.com, "Team plan"). Never use the maintainer's name, links, or their other projects.
 - [ ] Add a row to the Components table in `README.md`.
 - [ ] `npm run check` and `npm run build` pass; check `dist/index.js` size didn't jump (a big jump usually means a dependency got bundled — keep `react`, `react-dom`, `@base-ui/*` external in `vite.config.ts`).
@@ -94,10 +95,12 @@ docs/banner.jpg            README banner
 - `role="status"` doesn't take its name from content, so Spinner points `aria-labelledby` at its hidden label.
 - Select builds its value→label lookup by walking its children for `Select.Item`; items wrapped in custom components need the `items` prop.
 - jsdom lacks some browser APIs; Base UI's toast close button is `aria-hidden`, so tests click it via its `aria-label`.
+- **Browser a11y run** (`vitest.storybook.config.ts`): `@storybook/addon-vitest` turns each story into a test, one Vitest project per theme via `storybookTest({ initialGlobals: { theme } })`. `a11y: { test: 'error' }` in `preview.tsx` makes violations fail. Needs Chromium locally: `npx playwright install chromium`.
+- Installing `@vitest/browser` makes `vitest/config` pull in its `expect` typings, which narrow `toHaveTextContent` to `string | number` (no RegExp). For an exact-text check use `expect(el.textContent).toBe('…')`.
 - Line endings are LF everywhere (`.gitattributes`, `.editorconfig`, Prettier).
 
 ## Known gaps / ideas
 
 - Dependabot alert #2 (`minimatch` DoS, moderate) is dev-only — pulled in by ESLint 9 / jsx-a11y (`minimatch@3`) and Storybook — and not in the published package. Deliberately left open: an `overrides` bump to 11 could break ESLint 9. Resolve it when moving to ESLint 10.
-- Storybook's axe results aren't enforced in CI (only `npm run check`'s jsdom axe tests are, and they skip color contrast).
+- Color contrast is enforced in CI by `npm run test:a11y` (real browser, both themes), but only for what stories render: states a story doesn't show (hover/focus colors, every Badge tone × variant unless a story lists them) aren't covered. axe also reports text over translucent/gradient backgrounds as "incomplete" rather than failing.
 - Not yet: Combobox, DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.

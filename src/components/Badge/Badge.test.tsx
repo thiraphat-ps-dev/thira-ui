@@ -47,7 +47,7 @@ describe('Badge', () => {
     const dot = badge.firstElementChild;
     expect(dot).toHaveClass('dot');
     expect(dot).toHaveAttribute('aria-hidden', 'true');
-    expect(badge).toHaveTextContent(/^Online$/);
+    expect(badge.textContent).toBe('Online');
   });
 
   it('has no dot by default', () => {

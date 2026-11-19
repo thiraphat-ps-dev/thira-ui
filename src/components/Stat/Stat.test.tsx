@@ -18,7 +18,7 @@ describe('Stat', () => {
   it('renders zero values and omits an empty unit', () => {
     render(<Stat label="Errors" value={0} />);
     const group = screen.getByRole('group', { name: 'Errors' });
-    expect(group).toHaveTextContent(/^Errors0$/);
+    expect(group.textContent).toBe('Errors0');
   });
 
   it('applies layout, variant and custom classes, and native props', () => {

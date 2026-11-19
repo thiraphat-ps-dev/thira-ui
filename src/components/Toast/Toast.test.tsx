@@ -68,7 +68,9 @@ describe('Toast', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Notify' }));
     // Base UI hides the close button from the a11y tree (toasts are dismissed via swipe/Esc for AT users).
     await userEvent.click(document.querySelector<HTMLButtonElement>('button[aria-label="Dismiss"]')!);
-    await waitFor(() => expect(screen.queryByText('Saved')).not.toBeInTheDocument());
+    await waitFor(() => {
+      expect(screen.queryByText('Saved')).not.toBeInTheDocument();
+    });
   });
 
   it('has no axe violations while visible', async () => {

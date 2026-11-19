@@ -22,6 +22,11 @@ function Example(props: Omit<TabsProps, 'children'> & { disableActivity?: boolea
 }
 
 describe('Tabs', () => {
+  it('has no axe violations', async () => {
+    render(<Example defaultValue="overview" disableActivity />);
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('wires up tablist, tab and tabpanel roles', () => {
     render(<Example defaultValue="overview" />);
     expect(screen.getByRole('tablist', { name: 'Project' })).toBeInTheDocument();

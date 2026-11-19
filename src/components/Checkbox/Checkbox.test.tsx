@@ -4,6 +4,17 @@ import { useState } from 'react';
 import { Checkbox, CheckboxGroup } from './Checkbox';
 
 describe('Checkbox', () => {
+  it('has no axe violations', async () => {
+    render(
+      <CheckboxGroup label="Toppings" defaultValue={['cheese']}>
+        <Checkbox value="cheese" label="Cheese" description="Extra mozzarella." />
+        <Checkbox value="olives" label="Olives" />
+        <Checkbox value="onions" label="Onions" disabled />
+      </CheckboxGroup>,
+    );
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('renders a checkbox linked to its label', () => {
     render(<Checkbox label="I agree to the terms" />);
     const checkbox = screen.getByRole('checkbox', { name: 'I agree to the terms' });

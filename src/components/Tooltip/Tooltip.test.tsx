@@ -15,6 +15,14 @@ function Example() {
 }
 
 describe('Tooltip', () => {
+  it('has no axe violations while open', async () => {
+    const user = userEvent.setup();
+    render(<Example />);
+    await user.tab();
+    expect(await screen.findByRole('tooltip')).toBeInTheDocument();
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('shows on hover and hides when the pointer leaves', async () => {
     const user = userEvent.setup();
     render(<Example />);

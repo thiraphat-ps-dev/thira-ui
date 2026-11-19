@@ -3,6 +3,16 @@ import userEvent from '@testing-library/user-event';
 import { Input } from './Input';
 
 describe('Input', () => {
+  it('has no axe violations with a hint and with an error', async () => {
+    render(
+      <>
+        <Input label="Email" hint="We never share it." />
+        <Input label="Name" error="Name is required" />
+      </>,
+    );
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('links the label to the input', () => {
     render(<Input label="Email" />);
     expect(screen.getByLabelText('Email')).toBeInstanceOf(HTMLInputElement);

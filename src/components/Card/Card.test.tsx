@@ -3,6 +3,20 @@ import { createRef } from 'react';
 import { Card } from './Card';
 
 describe('Card', () => {
+  it('has no axe violations', async () => {
+    render(
+      <Card role="article" aria-label="Team plan">
+        <Card.Header>
+          <Card.Title>Team plan</Card.Title>
+          <Card.Description>For growing teams.</Card.Description>
+        </Card.Header>
+        <Card.Body>Up to 10 members.</Card.Body>
+        <Card.Footer>Billed monthly.</Card.Footer>
+      </Card>,
+    );
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('renders all parts with their content', () => {
     render(
       <Card role="article" aria-label="Team plan">

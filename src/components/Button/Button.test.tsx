@@ -4,6 +4,19 @@ import { createRef } from 'react';
 import { Button } from './Button';
 
 describe('Button', () => {
+  it('has no axe violations across variants and states', async () => {
+    render(
+      <>
+        <Button>Save</Button>
+        <Button variant="danger">Delete</Button>
+        <Button loading>Saving</Button>
+        <Button disabled>Disabled</Button>
+        <Button render={<a href="/docs" />}>Docs</Button>
+      </>,
+    );
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('renders a type="button" by default so it never submits forms by accident', () => {
     render(<Button>Save</Button>);
     expect(screen.getByRole('button', { name: 'Save' })).toHaveAttribute('type', 'button');

@@ -4,6 +4,16 @@ import { useState } from 'react';
 import { Switch } from './Switch';
 
 describe('Switch', () => {
+  it('has no axe violations', async () => {
+    render(
+      <>
+        <Switch label="Email notifications" description="Get a weekly summary." defaultChecked />
+        <Switch label="Push notifications" disabled />
+      </>,
+    );
+    await expect(document.body).toHaveNoAxeViolations();
+  });
+
   it('renders a switch linked to its label', () => {
     render(<Switch label="Email notifications" />);
     const toggle = screen.getByRole('switch', { name: 'Email notifications' });

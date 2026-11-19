@@ -107,9 +107,11 @@ export function TooltipProvider(props: TooltipProviderProps) {
  * Tooltips are supplementary — don't put essential information or interactive content in them.
  *
  * ```tsx
+ * import { SettingsIcon } from 'thira-icons/react/settings';
+ *
  * <Tooltip>
  *   <Tooltip.Trigger render={<Button variant="ghost" aria-label="Settings" />}>
- *     <GearIcon />
+ *     <SettingsIcon size={16} />
  *   </Tooltip.Trigger>
  *   <Tooltip.Content>Settings</Tooltip.Content>
  * </Tooltip>

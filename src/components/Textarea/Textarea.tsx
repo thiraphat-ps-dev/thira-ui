@@ -1,5 +1,7 @@
+import { Field as BaseField } from '@base-ui/react/field';
 import { useId, useState, type ChangeEvent, type ComponentProps, type ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { Field, fieldControlProps, useFieldContext } from '../Field/Field';
 import styles from './Textarea.module.css';
 
 export interface TextareaProps extends ComponentProps<'textarea'> {
@@ -37,6 +39,8 @@ export function Textarea({
   id,
   className,
   required,
+  disabled,
+  ref,
   rows,
   style,
   value,
@@ -61,9 +65,6 @@ export function Textarea({
     onChange?.(event);
   };
 
-  const describedBy =
-    [hasMessage ? messageId : null, showCount ? countId : null].filter(Boolean).join(' ') || undefined;
-
   const resizeVars: Record<string, number> | undefined = autoResize
     ? {
         '--thira-textarea-min-rows': minRows,
@@ -72,43 +73,32 @@ export function Textarea({
     : undefined;
 
   return (
-    <div className={cx(styles.field, className)}>
-      {label && (
-        <label htmlFor={textareaId} className={styles.label}>
-          {label}
-          {required && (
-            <span className={styles.required} aria-hidden="true">
-              *
-            </span>
-          )}
-        </label>
-      )}
-      <textarea
+    <Field label={label} invalid={Boolean(error)} required={required} disabled={disabled} className={className}>
+      <TextareaControl
+        ref={ref}
         id={textareaId}
-        className={cx(
-          styles.textarea,
-          styles[size],
-          autoResize && styles.autoResize,
-          autoResize && maxRows !== undefined && styles.maxRows,
-        )}
-        required={required}
-        rows={rows ?? (autoResize ? minRows : undefined)}
-        maxLength={maxLength}
+        disabled={disabled}
         value={value}
         defaultValue={defaultValue}
-        onChange={handleChange}
-        style={resizeVars ? { ...resizeVars, ...style } : style}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-        {...props}
+        countId={showCount ? countId : undefined}
+        ownProps={props}
+        textareaProps={{
+          className: cx(
+            styles.textarea,
+            styles[size],
+            autoResize && styles.autoResize,
+            autoResize && maxRows !== undefined && styles.maxRows,
+          ),
+          required,
+          rows: rows ?? (autoResize ? minRows : undefined),
+          maxLength,
+          onChange: handleChange,
+          style: resizeVars ? { ...resizeVars, ...style } : style,
+        }}
       />
       {(hasMessage || showCount) && (
         <div className={styles.footer}>
-          {hasMessage && (
-            <p id={messageId} className={cx(styles.message, error ? styles.error : undefined)}>
-              {message}
-            </p>
-          )}
+          <Field.Message id={messageId} hint={hint} error={error} />
           {/*
             No aria-live on purpose: announcing on every keystroke talks over what the user types.
             The counter is in aria-describedby, so screen readers read it when the field is focused,
@@ -128,7 +118,51 @@ export function Textarea({
           )}
         </div>
       )}
-    </div>
+    </Field>
+  );
+}
+
+type TextareaElementProps = ComponentProps<'textarea'>;
+
+/**
+ * The `<textarea>` as a Base UI `Field.Control`. The counter isn't a `Field.Description`: its id is
+ * appended here so it always comes after the hint/error in `aria-describedby`.
+ */
+function TextareaControl({
+  ref,
+  id,
+  disabled,
+  value,
+  defaultValue,
+  countId,
+  ownProps,
+  textareaProps,
+}: Pick<TextareaElementProps, 'ref' | 'id' | 'disabled' | 'value' | 'defaultValue'> & {
+  countId?: string;
+  ownProps: TextareaElementProps;
+  textareaProps: TextareaElementProps;
+}) {
+  const context = useFieldContext();
+  return (
+    <BaseField.Control
+      ref={ref}
+      id={id}
+      disabled={disabled}
+      value={value}
+      defaultValue={defaultValue}
+      render={(fieldProps) => {
+        const base = fieldProps as TextareaElementProps;
+        const describedBy = [base['aria-describedby'], countId].filter(Boolean).join(' ') || undefined;
+        return (
+          <textarea
+            {...fieldControlProps<TextareaElementProps>(context, base, ownProps, {
+              ...textareaProps,
+              'aria-describedby': describedBy,
+            })}
+          />
+        );
+      }}
+    />
   );
 }
 

@@ -24,6 +24,8 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | Component     | Notes                                                                                                                     |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `Button`      | `solid` · `outline` · `ghost` · `danger`, three sizes, `loading` state, `render` prop for links                           |
+| `Field`       | Label + hint/error for any control on Base UI `Field` (`Field.Control` or a Base UI control); parts for custom layouts    |
+| `Fieldset`    | Native `<fieldset>` named by its legend, with group hint/error; `disabled` disables everything inside                     |
 | `Input`       | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                                   |
 | `Textarea`    | Multi-line field with label, hint/error, CSS-only auto-resize (`field-sizing: content`) and an optional character counter |
 | `Checkbox`    | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox              |
@@ -105,6 +107,23 @@ function DeleteProject() {
   );
 }
 ```
+
+### Forms: `Field` and `Fieldset`
+
+`Input`, `Textarea`, `Select` and `RadioGroup` already include their label, hint and error. For any other control, wrap it in `Field`; group related fields with `Fieldset`:
+
+```tsx
+import { Field, Fieldset, Input } from 'thira-ui';
+
+<Fieldset legend="Billing details" hint="Shown on every invoice.">
+  <Input label="Company" required />
+  <Field label="Tax ID" hint="13 digits." error={errors.taxId} required>
+    <Field.Control name="taxId" inputMode="numeric" required />
+  </Field>
+</Fieldset>;
+```
+
+`Field` links the label (`<label for>`, or `aria-labelledby` with `nativeLabel={false}`) and the hint/error (`aria-describedby`), and sets `aria-invalid` from `error`. Validity comes from your `error` prop (any form library works); Base UI's native constraint messages aren't shown. For a custom layout, use the parts: `Field.Label`, `Field.Control`, `Field.Description`, `Field.Error`, `Field.Message`.
 
 ## Using with Astro (and other server-rendered frameworks)
 

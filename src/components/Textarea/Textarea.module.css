@@ -1,22 +1,4 @@
 @layer thira {
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--thira-space-2);
-    font-family: var(--thira-font);
-  }
-
-  .label {
-    font-size: var(--thira-text-sm);
-    font-weight: 500;
-    color: var(--thira-text);
-  }
-
-  .required {
-    margin-inline-start: 2px;
-    color: var(--thira-danger);
-  }
-
   .textarea {
     --_padding-block: var(--thira-space-2);
     --_line-height: 1.5;
@@ -97,16 +79,6 @@
     display: flex;
     gap: var(--thira-space-3);
     align-items: baseline;
-  }
-
-  .message {
-    margin: 0;
-    font-size: 0.8125rem;
-    color: var(--thira-text-muted);
-  }
-
-  .error {
-    color: var(--thira-danger);
   }
 
   .count {

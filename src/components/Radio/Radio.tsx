@@ -2,6 +2,7 @@ import { Radio as BaseRadio } from '@base-ui/react/radio';
 import { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';
 import { useId, type ComponentProps, type ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { Fieldset } from '../Fieldset/Fieldset';
 import styles from './Radio.module.css';
 
 export interface RadioProps extends Omit<
@@ -75,37 +76,19 @@ export function RadioGroup<Value = string>({
   children,
   ...props
 }: RadioGroupProps<Value>) {
-  const labelId = useId();
-  const messageId = useId();
-  const message = error ?? hint;
-
   return (
-    <BaseRadioGroup<Value>
-      className={cx(styles.group, className)}
+    <Fieldset
+      legend={label}
+      hint={hint}
+      error={error}
       required={required}
-      aria-labelledby={label ? labelId : undefined}
-      aria-describedby={message ? messageId : undefined}
-      aria-invalid={error ? true : undefined}
-      {...props}
+      disabled={props.disabled}
+      className={cx(styles.group, className)}
+      render={<BaseRadioGroup<Value> required={required} {...props} />}
     >
-      {label && (
-        <div id={labelId} className={styles.groupLabel}>
-          {label}
-          {required && (
-            <span className={styles.required} aria-hidden="true">
-              *
-            </span>
-          )}
-        </div>
-      )}
       <div className={styles.items} data-orientation={orientation}>
         {children}
       </div>
-      {message && (
-        <p id={messageId} className={cx(styles.message, error ? styles.error : undefined)}>
-          {message}
-        </p>
-      )}
-    </BaseRadioGroup>
+    </Fieldset>
   );
 }

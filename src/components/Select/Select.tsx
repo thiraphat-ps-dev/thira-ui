@@ -4,6 +4,7 @@ import { CheckIcon } from 'thira-icons/react/check';
 import { ChevronDownIcon } from 'thira-icons/react/chevron-down';
 import { cx } from '../../utils/cx';
 import { ICON_STROKE } from '../../utils/icon';
+import { Field } from '../Field/Field';
 import styles from './Select.module.css';
 
 export interface SelectItemData<Value = string> {
@@ -104,27 +105,24 @@ function SelectRoot<Value = string>({
   ...props
 }: SelectProps<Value>) {
   const messageId = `${useId()}-message`;
-  const message = error ?? hint;
   const lookup = items ?? collectItems(children);
 
   return (
-    <div className={cx(styles.field, className)}>
+    <Field
+      label={label}
+      hint={hint}
+      error={error}
+      required={required}
+      disabled={props.disabled}
+      nativeLabel={false}
+      messageId={messageId}
+      className={className}
+    >
       <BaseSelect.Root<Value> items={lookup as SelectItemData<Value>[]} required={required} {...props}>
-        {label && (
-          <BaseSelect.Label className={styles.label}>
-            {label}
-            {required && (
-              <span className={styles.required} aria-hidden="true">
-                *
-              </span>
-            )}
-          </BaseSelect.Label>
-        )}
         <BaseSelect.Trigger
           className={cx(styles.trigger, styles[size])}
           aria-label={ariaLabel}
           aria-invalid={error ? true : undefined}
-          aria-describedby={message ? messageId : undefined}
         >
           <BaseSelect.Value className={styles.value} placeholder={placeholder} />
           <BaseSelect.Icon className={styles.icon}>
@@ -150,12 +148,7 @@ function SelectRoot<Value = string>({
           </BaseSelect.Positioner>
         </BaseSelect.Portal>
       </BaseSelect.Root>
-      {message && (
-        <p id={messageId} className={cx(styles.message, error ? styles.error : undefined)}>
-          {message}
-        </p>
-      )}
-    </div>
+    </Field>
   );
 }
 

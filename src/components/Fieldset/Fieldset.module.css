@@ -1,0 +1,33 @@
+@layer thira {
+  .fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--thira-space-3);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--thira-font);
+  }
+
+  .legend {
+    font-size: var(--thira-text-sm);
+    font-weight: 600;
+    color: var(--thira-text);
+  }
+
+  .required {
+    margin-inline-start: 2px;
+    color: var(--thira-danger);
+  }
+
+  .message {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--thira-text-muted);
+  }
+
+  .error {
+    color: var(--thira-danger);
+  }
+}

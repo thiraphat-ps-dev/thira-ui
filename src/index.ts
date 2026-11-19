@@ -20,6 +20,16 @@ export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from '.
 export { Card, type CardProps, type CardTitleProps } from './components/Card/Card';
 export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
+export {
+  Field,
+  type FieldControlProps,
+  type FieldDescriptionProps,
+  type FieldErrorProps,
+  type FieldLabelProps,
+  type FieldMessageProps,
+  type FieldProps,
+} from './components/Field/Field';
+export { Fieldset, type FieldsetLegendProps, type FieldsetProps } from './components/Fieldset/Fieldset';
 export { Input, type InputProps } from './components/Input/Input';
 export { Kbd, type KbdProps, type KbdSize } from './components/Kbd/Kbd';
 export {

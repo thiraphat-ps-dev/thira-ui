@@ -1,5 +1,15 @@
 # thira-ui
 
+## 0.9.0
+
+### Minor Changes
+
+- a846bd4: Add `Field` and `Fieldset`, built on Base UI's `Field` and `Fieldset`. `Field` wires a label, hint and error to one control (`Field.Control`, or a Base UI control such as `Select` or `Checkbox`) and has parts for custom layouts; `Fieldset` groups fields under a legend with a group hint/error. `Input`, `Textarea`, `Select` and `RadioGroup` now use them internally; their props and accessible names, descriptions and invalid states are unchanged.
+
+### Patch Changes
+
+- b9060d7: Bump `thira-icons` to ^0.3.0 and the `thira-sans` dev dependency (used by Storybook) to ^0.6.0.
+
 ## 0.8.1
 
 ### Patch Changes

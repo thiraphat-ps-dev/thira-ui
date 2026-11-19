@@ -1,5 +1,12 @@
 # thira-ui
 
+## 0.8.1
+
+### Patch Changes
+
+- 44e53f6: Update `thira-icons` to `^0.2.0` and test against `thira-sans` 0.5. Icons given an `aria-label` or `aria-labelledby` are now exposed as `role="img"` instead of being hidden from assistive tech; the icons thira-ui renders itself are decorative and stay `aria-hidden`. With thira-sans 0.5+, Thai digits (๐–๙) are tabular too, so `Progress`, `Stat` and `Textarea` counters keep a steady width when they show Thai numerals.
+- 12c71f6: Fix the `Tooltip` JSDoc example: it used a `GearIcon` that doesn't exist; it now imports `SettingsIcon` from `thira-icons/react/settings`.
+
 ## 0.8.0
 
 ### Minor Changes

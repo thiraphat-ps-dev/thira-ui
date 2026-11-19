@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { expect, screen } from 'storybook/test';
+import { screen } from 'storybook/test';
+import { waitForOpen } from '../../../.storybook/wait-for-open';
 import { Button } from '../Button/Button';
 import { Menu } from './Menu';
 
@@ -33,8 +34,7 @@ const openMenu: Story['play'] = async ({ canvas, userEvent }) => {
   await userEvent.click(canvas.getByRole('button'));
   const menu = await screen.findByRole('menu');
   await userEvent.keyboard('{ArrowUp}');
-  await Promise.allSettled(document.getAnimations().map((a) => a.finished));
-  await expect(menu).toBeVisible();
+  await waitForOpen(menu);
 };
 
 function ChevronDown() {

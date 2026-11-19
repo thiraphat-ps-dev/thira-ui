@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { expect, screen } from 'storybook/test';
+import { screen } from 'storybook/test';
+import { waitForOpen } from '../../../.storybook/wait-for-open';
 import { Select } from './Select';
 
 const plans = [
@@ -48,8 +49,7 @@ type Story = StoryObj<typeof meta>;
 const openSelect: Story['play'] = async ({ canvas, userEvent }) => {
   await userEvent.click(canvas.getByRole('combobox'));
   const listbox = await screen.findByRole('listbox');
-  await Promise.allSettled(document.getAnimations().map((a) => a.finished));
-  await expect(listbox).toBeVisible();
+  await waitForOpen(listbox);
 };
 
 export const Default: Story = {};

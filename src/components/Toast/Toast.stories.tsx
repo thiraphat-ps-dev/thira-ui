@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, screen } from 'storybook/test';
+import { screen } from 'storybook/test';
+import { waitForOpen } from '../../../.storybook/wait-for-open';
 import { Button } from '../Button/Button';
 import { ToastProvider, useToast } from './Toast';
 
@@ -75,8 +76,16 @@ export const Playground: Story = {
     for (const name of ['Neutral', 'Success', 'Danger']) {
       await userEvent.click(canvas.getByRole('button', { name }));
     }
-    await screen.findByText('Upload failed');
-    await Promise.allSettled(document.getAnimations().map((a) => a.finished));
-    await expect(screen.getByText('Draft saved')).toBeVisible();
+    // Find each toast's root: Base UI also mirrors the text into a hidden live region, and
+    // high-priority toasts are aria-hidden, so query by text rather than role.
+    const toasts = await Promise.all(
+      ['Draft saved', 'Published!', 'Upload failed'].map(async (text) => {
+        const matches = await screen.findAllByText(text);
+        const root = matches.map((el) => el.closest('[data-tone]')).find((el) => el !== null);
+        if (!root) throw new Error(`No toast found for "${text}"`);
+        return root;
+      }),
+    );
+    await waitForOpen(...toasts);
   },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState, type ComponentProps } from 'react';
-import { expect, screen } from 'storybook/test';
+import { screen } from 'storybook/test';
+import { waitForOpen } from '../../../.storybook/wait-for-open';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Switch } from '../Switch/Switch';
@@ -33,8 +34,7 @@ type Story = StoryObj<typeof meta>;
 const openPopover: Story['play'] = async ({ canvas, userEvent }) => {
   await userEvent.click(canvas.getByRole('button'));
   const popup = await screen.findByRole('dialog');
-  await Promise.allSettled(document.getAnimations().map((a) => a.finished));
-  await expect(popup).toBeVisible();
+  await waitForOpen(popup);
 };
 
 export const Basic: Story = {

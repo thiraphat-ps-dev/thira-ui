@@ -42,4 +42,27 @@ describe('Input', () => {
     render(<Input label="Name" id="custom" />);
     expect(screen.getByLabelText('Name')).toHaveAttribute('id', 'custom');
   });
+
+  it('keeps the error on a disabled input', () => {
+    render(<Input label="Email" error="Email is required" disabled />);
+    const input = screen.getByLabelText('Email');
+    expect(input).toBeDisabled();
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(input).toHaveAccessibleDescription('Email is required');
+  });
+
+  it('lets an explicit aria-describedby replace the hint link', () => {
+    render(
+      <>
+        <p id="external">External note</p>
+        <Input label="Email" hint="We never share it." aria-describedby="external" />
+      </>,
+    );
+    expect(screen.getByLabelText('Email')).toHaveAccessibleDescription('External note');
+  });
+
+  it('keeps the hint id derived from the input id', () => {
+    render(<Input label="Name" id="custom" hint="Hint text" />);
+    expect(screen.getByText('Hint text')).toHaveAttribute('id', 'custom-message');
+  });
 });

@@ -116,4 +116,16 @@ describe('Textarea', () => {
     );
     await expect(document.body).toHaveNoAxeViolations();
   });
+
+  it('keeps the hint/error before the counter in the description when the error changes', () => {
+    const { rerender } = render(<Textarea label="Bio" hint="Public." showCount maxLength={10} />);
+    const textarea = screen.getByLabelText('Bio');
+    expect(textarea).toHaveAccessibleDescription('Public. 0 of 10 characters used');
+    rerender(<Textarea label="Bio" hint="Public." error="Too long" showCount maxLength={10} />);
+    expect(textarea).toHaveAccessibleDescription('Too long 0 of 10 characters used');
+    expect(textarea).toHaveAttribute('aria-invalid', 'true');
+    rerender(<Textarea label="Bio" showCount maxLength={10} />);
+    expect(textarea).toHaveAccessibleDescription('0 of 10 characters used');
+    expect(textarea).not.toHaveAttribute('aria-invalid');
+  });
 });

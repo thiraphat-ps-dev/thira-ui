@@ -50,3 +50,14 @@ export const Inline: Story = {
 };
 
 export const Plain: Story = { args: { variant: 'plain' } };
+
+/** Thai digits are tabular too (thira-sans ≥ 0.5), so stacked values line up digit for digit. */
+export const ThaiDigits: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 'var(--thira-space-2)', width: 260 }} lang="th">
+      <Stat layout="inline" label="ผู้ใช้งาน" value="๑,๑๑๑" />
+      <Stat layout="inline" label="คำสั่งซื้อ" value="๘,๐๙๔" />
+      <Stat layout="inline" label="ยอดขาย" value="๔๗,๒๓๕" unit="฿" />
+    </div>
+  ),
+};

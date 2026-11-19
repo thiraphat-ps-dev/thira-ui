@@ -101,6 +101,6 @@ docs/banner.jpg            README banner
 
 ## Known gaps / ideas
 
-- Dependabot alert #2 (`minimatch` DoS, moderate) is dev-only — pulled in by ESLint 9 / jsx-a11y (`minimatch@3`) and Storybook — and not in the published package. Deliberately left open: an `overrides` bump to 11 could break ESLint 9. Resolve it when moving to ESLint 10.
+- Dependabot alert #2 (`minimatch` DoS, moderate, dev-only): the vulnerable range is `>=7 <11.0.1`, so only the `minimatch@10` copies (via Storybook's docgen plugin → `glob@13`, and `@typescript-eslint/typescript-estree`) were affected; ESLint 9 / jsx-a11y use `minimatch@3`, which is outside the range. Fixed with a scoped `overrides` entry (`"minimatch@^10.0.0": "^11.0.1"`) that leaves `minimatch@3` alone. Drop the override once those packages depend on `minimatch@11` themselves.
 - Color contrast is enforced in CI by `npm run test:a11y` (real browser, both themes), but only for what stories render: states a story doesn't show (hover/focus colors, every Badge tone × variant unless a story lists them) aren't covered. axe also reports text over translucent/gradient backgrounds as "incomplete" rather than failing.
 - Not yet: Combobox, DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.

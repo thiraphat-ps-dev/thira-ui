@@ -42,6 +42,7 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | `Accordion`   | Collapsible sections with real headings (`headingLevel`), one or `multiple` open, `outline`/`plain`, find-in-page aware   |
 | `Menu`        | Dropdown action menu: `danger` tone, shortcut hints, groups, separators, checkbox/radio items                             |
 | `Select`      | Single-select dropdown with label, hint/error, groups and an optional `items` prop                                        |
+| `Combobox`    | Single-select with a filter input (client-side, strict: value is always one of `items`), empty message, clear button      |
 | `Tooltip`     | Hover/focus hint, Esc to close, optional arrow, `TooltipProvider` for shared delay                                        |
 | `Toast`       | `ToastProvider` + `useToast()`; stacked toasts, swipe to dismiss, action button                                           |
 | `Badge`       | Status label: `neutral` · `accent` · `success` · `warning` · `danger` tones, `soft` · `solid` · `outline`, optional dot   |

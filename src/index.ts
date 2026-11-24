@@ -19,6 +19,12 @@ export { Badge, type BadgeProps, type BadgeSize, type BadgeTone, type BadgeVaria
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './components/Button/Button';
 export { Card, type CardProps, type CardTitleProps } from './components/Card/Card';
 export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps } from './components/Checkbox/Checkbox';
+export {
+  Combobox,
+  type ComboboxItemData,
+  type ComboboxProps,
+  type ComboboxValue,
+} from './components/Combobox/Combobox';
 export { Dialog, type DialogContentProps } from './components/Dialog/Dialog';
 export {
   Field,

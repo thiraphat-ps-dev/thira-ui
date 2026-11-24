@@ -88,11 +88,12 @@ docs/banner.jpg            README banner
 - ESLint runs `strictTypeChecked` — prefer fixing the code over disabling rules; if a rule must be relaxed, scope it narrowly in `eslint.config.js` with a comment.
 - Toast: Base UI sets `aria-hidden` on high-priority toasts (announced via a separate live region) and on the close button until the viewport is hovered/focused; both clear on focus. axe's `aria-hidden-focus` is disabled for the Toast stories for that reason — don't "fix" it by overriding Base UI.
 - Portaled popups (Menu, Select, Popover) sit outside any landmark, so the jsdom axe matcher turns off axe's `region` rule (Storybook's a11y addon does the same by default).
-- Select, Menu and Popover stories disable `aria-hidden-focus`: while the popup is open Base UI adds `aria-hidden` focus-guard spans with `tabindex=0` that forward focus. Same reasoning as Toast.
+- Select, Combobox, Menu and Popover stories disable `aria-hidden-focus`: while the popup is open Base UI adds `aria-hidden` focus-guard spans with `tabindex=0` that forward focus. Same reasoning as Toast.
 - Layering: Dialog 50–51, Menu/Popover 55, Tooltip 60. Keep new floating parts in this order.
 - Status colours: `--thira-success` / `--thira-warning` / `--thira-danger` each have `--thira-on-*` (text on solid) and `*-soft` (12% tint). White on the success green is only ~4.2:1, so `--thira-on-success` is dark. Badge's soft/outline text mixes the tone with `--thira-text` (warning needs 50%) to stay ≥ 4.5:1 in both themes.
 - Button's loading state renders `<Spinner label={null} />` (decorative; the button carries `aria-busy`). Spinner pulses instead of spinning under reduced motion.
 - `role="status"` doesn't take its name from content, so Spinner points `aria-labelledby` at its hidden label.
+- Combobox labels its input with `aria-labelledby` (`nativeLabel={false}`), not `<label for>`: while the popup is open Base UI sets `aria-hidden` on the rest of the page, label included, and axe (and some browsers) won't name an input from a hidden `<label>`.
 - Select builds its value→label lookup by walking its children for `Select.Item`; items wrapped in custom components need the `items` prop.
 - jsdom lacks some browser APIs; Base UI's toast close button is `aria-hidden`, so tests click it via its `aria-label`.
 - **Browser a11y run** (`vitest.storybook.config.ts`): `@storybook/addon-vitest` turns each story into a test, one Vitest project per theme via `storybookTest({ initialGlobals: { theme } })`. `a11y: { test: 'error' }` in `preview.tsx` makes violations fail. Needs Chromium locally: `npx playwright install chromium`.
@@ -103,4 +104,5 @@ docs/banner.jpg            README banner
 
 - Dependabot alert #2 (`minimatch` DoS, moderate, dev-only): the vulnerable range is `>=7 <11.0.1`, so only the `minimatch@10` copies (via Storybook's docgen plugin → `glob@13`, and `@typescript-eslint/typescript-estree`) were affected; ESLint 9 / jsx-a11y use `minimatch@3`, which is outside the range. Fixed with a scoped `overrides` entry (`"minimatch@^10.0.0": "^11.0.1"`) that leaves `minimatch@3` alone. Drop the override once those packages depend on `minimatch@11` themselves.
 - Color contrast is enforced in CI by `npm run test:a11y` (real browser, both themes), but only for what stories render: states a story doesn't show (hover/focus colors, every Badge tone × variant unless a story lists them) aren't covered. axe also reports text over translucent/gradient backgrounds as "incomplete" rather than failing.
-- Not yet: Combobox, DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.
+- Combobox exists in a minimal form: single value, client-side filter by label, strict (the value is always one of `items`). Multi-select/chips, async loading and free text (creatable items) are deferred until a real app needs them.
+- Not yet: DatePicker (Buddhist calendar), Table. Add them when a real app needs them, so the API comes from use.

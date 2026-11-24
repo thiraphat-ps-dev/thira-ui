@@ -1,0 +1,112 @@
+@layer thira {
+  .field {
+    --thira-slider-track: 0.375rem;
+    --thira-slider-thumb: 1.125rem;
+    --thira-slider-color: var(--thira-accent);
+  }
+
+  .sm {
+    --thira-slider-track: 0.25rem;
+    --thira-slider-thumb: 0.875rem;
+  }
+  .md {
+    --thira-slider-track: 0.375rem;
+    --thira-slider-thumb: 1.125rem;
+  }
+  .lg {
+    --thira-slider-track: 0.5rem;
+    --thira-slider-thumb: 1.375rem;
+  }
+
+  .root {
+    display: grid;
+    gap: var(--thira-space-2);
+    width: 100%;
+    font-size: var(--thira-text-sm);
+
+    &[data-invalid] {
+      --thira-slider-color: var(--thira-danger);
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--thira-space-3);
+  }
+
+  .value {
+    margin-inline-start: auto;
+    color: var(--thira-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .control {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    /* Room for the thumb, and a taller hit area than the thin track. */
+    min-height: max(1.5rem, calc(var(--thira-slider-thumb) + var(--thira-space-2)));
+    touch-action: none;
+    user-select: none;
+    cursor: pointer;
+
+    /* Only the control is dimmed: the label and value text keep full contrast. */
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  .track {
+    position: relative;
+    width: 100%;
+    height: var(--thira-slider-track);
+    border-radius: var(--thira-radius-full);
+    background: var(--thira-surface-muted);
+    /* text-muted outline keeps the empty track ≥3:1 against the surface in both themes (WCAG 1.4.11). */
+    box-shadow: inset 0 0 0 1px var(--thira-text-muted);
+  }
+
+  .indicator {
+    border-radius: inherit;
+    background: var(--thira-slider-color);
+  }
+
+  .thumb {
+    box-sizing: border-box;
+    width: var(--thira-slider-thumb);
+    height: var(--thira-slider-thumb);
+    border: 2px solid var(--thira-slider-color);
+    border-radius: var(--thira-radius-full);
+    background: var(--thira-surface);
+    box-shadow: var(--thira-shadow-sm);
+    transition:
+      box-shadow var(--thira-duration) var(--thira-ease),
+      scale var(--thira-duration) var(--thira-ease);
+
+    &:has(:focus-visible) {
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &[data-dragging] {
+      scale: 1.1;
+    }
+
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
+  }
+
+  .root[data-invalid] .thumb:has(:focus-visible) {
+    box-shadow: 0 0 0 3px var(--thira-danger-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thumb {
+      transition: none;
+    }
+  }
+}

@@ -28,6 +28,7 @@ A minimal, accessible React component library built on [Base UI](https://base-ui
 | `Fieldset`    | Native `<fieldset>` named by its legend, with group hint/error; `disabled` disables everything inside                     |
 | `Input`       | Label, hint and error wired up with `aria-describedby` / `aria-invalid`                                                   |
 | `Textarea`    | Multi-line field with label, hint/error, CSS-only auto-resize (`field-sizing: content`) and an optional character counter |
+| `Slider`      | Single value or range (two named thumbs), min/max/step, `format`, optional value text, label/hint/error via `Field`       |
 | `Checkbox`    | Label + description wired up; `indeterminate` (`aria-checked="mixed"`); `CheckboxGroup` with parent checkbox              |
 | `RadioGroup`  | Labelled single-choice group (`Radio` items with descriptions), hint/error, arrow-key selection, vertical/horizontal      |
 | `Switch`      | On/off toggle (`role="switch"`), optional label and description, three sizes, reduced-motion aware                        |

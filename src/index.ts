@@ -68,6 +68,7 @@ export { Skeleton, type SkeletonProps, type SkeletonVariant } from './components
 export { Spinner, type SpinnerProps, type SpinnerSize } from './components/Spinner/Spinner';
 export { Stat, type StatLayout, type StatProps, type StatVariant } from './components/Stat/Stat';
 export { Switch, type SwitchProps, type SwitchSize } from './components/Switch/Switch';
+export { Slider, type SliderProps, type SliderSize } from './components/Slider/Slider';
 export {
   Tabs,
   type TabsListProps,

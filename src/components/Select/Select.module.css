@@ -79,7 +79,7 @@
   }
 
   .positioner {
-    z-index: 60;
+    z-index: 55; /* same tier as Menu/Popover: above dialogs (50–51), below tooltips (60) */
     outline: none;
   }
 

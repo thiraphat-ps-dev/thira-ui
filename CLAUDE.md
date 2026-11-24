@@ -89,7 +89,7 @@ docs/banner.jpg            README banner
 - Toast: Base UI sets `aria-hidden` on high-priority toasts (announced via a separate live region) and on the close button until the viewport is hovered/focused; both clear on focus. axe's `aria-hidden-focus` is disabled for the Toast stories for that reason — don't "fix" it by overriding Base UI.
 - Portaled popups (Menu, Select, Popover) sit outside any landmark, so the jsdom axe matcher turns off axe's `region` rule (Storybook's a11y addon does the same by default).
 - Select, Combobox, Menu and Popover stories disable `aria-hidden-focus`: while the popup is open Base UI adds `aria-hidden` focus-guard spans with `tabindex=0` that forward focus. Same reasoning as Toast.
-- Layering: Dialog 50–51, Menu/Popover 55, Tooltip 60. Keep new floating parts in this order.
+- Layering: Dialog 50–51, Menu/Popover/Select/Combobox 55, Tooltip 60. Keep new floating parts in this order.
 - Status colours: `--thira-success` / `--thira-warning` / `--thira-danger` each have `--thira-on-*` (text on solid) and `*-soft` (12% tint). White on the success green is only ~4.2:1, so `--thira-on-success` is dark. Badge's soft/outline text mixes the tone with `--thira-text` (warning needs 50%) to stay ≥ 4.5:1 in both themes.
 - Button's loading state renders `<Spinner label={null} />` (decorative; the button carries `aria-busy`). Spinner pulses instead of spinning under reduced motion.
 - `role="status"` doesn't take its name from content, so Spinner points `aria-labelledby` at its hidden label.

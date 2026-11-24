@@ -1,5 +1,15 @@
 # thira-ui
 
+## 0.10.0
+
+### Minor Changes
+
+- 64a4e3a: Add `Slider`, `NumberField` and a minimal `Combobox`, built on Base UI and `Field` so they take `label`, `hint` and `error` like `Input`. `Slider` takes a single value or a range (two thumbs named "Minimum"/"Maximum", overridable with `thumbLabels`), `min`/`max`/`step`, `format` and an optional value readout. `NumberField` is a number input with −/+ buttons, `min`/`max`/`step` and `format` (`Intl.NumberFormatOptions`). `Combobox` picks one value from `items` filtered as you type; the value is always one of the items (no free text), with an empty-state message and a clear button.
+
+### Patch Changes
+
+- 0a1ce30: `Select`'s popup now uses z-index 55, the same tier as `Menu`, `Popover` and `Combobox`, so a `Tooltip` (60) shows above an open Select list instead of tying with it.
+
 ## 0.9.0
 
 ### Minor Changes

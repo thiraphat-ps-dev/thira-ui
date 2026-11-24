@@ -46,6 +46,7 @@ export {
   type MenuSeparatorProps,
   type MenuTriggerProps,
 } from './components/Menu/Menu';
+export { NumberField, type NumberFieldProps, type NumberFieldSize } from './components/NumberField/NumberField';
 export {
   Popover,
   type PopoverCloseProps,

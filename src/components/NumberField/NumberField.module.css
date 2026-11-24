@@ -1,0 +1,110 @@
+@layer thira {
+  .group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--thira-border-strong);
+    border-radius: var(--thira-radius-md);
+    background: var(--thira-surface);
+    color: var(--thira-text);
+    font-size: var(--thira-text-sm);
+    transition:
+      border-color var(--thira-duration) var(--thira-ease),
+      box-shadow var(--thira-duration) var(--thira-ease);
+
+    &:hover:not([data-disabled]) {
+      border-color: var(--thira-text-muted);
+    }
+
+    &:has(.input:focus-visible) {
+      border-color: var(--thira-accent);
+      box-shadow: var(--thira-focus-ring);
+    }
+
+    &:has(.input[aria-invalid='true']) {
+      border-color: var(--thira-danger);
+    }
+
+    &:has(.input[aria-invalid='true']:focus-visible) {
+      box-shadow: 0 0 0 3px var(--thira-danger-soft);
+    }
+
+    &[data-disabled] {
+      opacity: 0.55;
+      cursor: not-allowed;
+      background: var(--thira-surface-muted);
+    }
+  }
+
+  .sm {
+    height: 2rem;
+  }
+  .md {
+    height: 2.5rem;
+  }
+  .lg {
+    height: 3rem;
+    font-size: var(--thira-text-md);
+  }
+
+  .input {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding-inline: var(--thira-space-2);
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    outline: none;
+
+    &::placeholder {
+      color: var(--thira-text-muted);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    height: 100%;
+    color: var(--thira-text-muted);
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--thira-duration) var(--thira-ease),
+      color var(--thira-duration) var(--thira-ease);
+
+    &:first-child {
+      border-start-start-radius: inherit;
+      border-end-start-radius: inherit;
+    }
+
+    &:last-child {
+      border-start-end-radius: inherit;
+      border-end-end-radius: inherit;
+    }
+
+    &:hover:not([data-disabled]) {
+      background: var(--thira-surface-muted);
+      color: var(--thira-text);
+    }
+
+    &[data-disabled] {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+}
